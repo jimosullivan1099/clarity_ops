@@ -7,6 +7,7 @@
     sql: ${TABLE}.id
 
   - dimension: amount
+    label: 'setup fee'
     type: number
     sql: ${TABLE}.amount
 
@@ -16,6 +17,7 @@
     sql: ${TABLE}.date
 
   - dimension: increase_amount
+    label: 'monthly fee'
     type: number
     sql: ${TABLE}.increase_amount
 
@@ -32,6 +34,7 @@
     sql: ${TABLE}.reconciled_monthly
 
   - dimension: ref_license_count
+    hidden: true
     type: number
     sql: ${TABLE}.ref_license_count
 
