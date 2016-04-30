@@ -3,14 +3,17 @@
 
   - dimension: id
     primary_key: true
+    hidden: true    
     type: number
     sql: ${TABLE}.id
 
   - dimension: amount
     type: number
+    label: 'monthly fee'
     sql: ${TABLE}.amount
 
   - dimension: base_amount
+    label: 'setup fee'
     type: number
     sql: ${TABLE}.base_amount
 
@@ -19,10 +22,12 @@
     sql: ${TABLE}.count
 
   - dimension: ref_instance
+    hidden: true
     type: number
     sql: ${TABLE}.ref_instance
 
   - dimension: ref_license
+    hidden: true
     type: number
     sql: ${TABLE}.ref_license
 

@@ -5,6 +5,7 @@
 
 
 - explore: instance
+  label: 'Clarity Licensing'
   joins:
     - join: instance_license_count
       sql_on: ${instance.id} = ${instance_license_count.ref_instance}  
