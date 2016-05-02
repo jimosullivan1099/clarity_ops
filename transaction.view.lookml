@@ -10,7 +10,12 @@
     label: 'setup fee'
     type: number
     sql: ${TABLE}.amount
-
+    
+  - measure: sum_setup_fee
+    type: sum
+    sql: ${TABLE}.amount    
+    
+    
   - dimension_group: date
     type: time
     timeframes: [time, date, week, month]
@@ -20,6 +25,10 @@
     label: 'monthly fee'
     type: number
     sql: ${TABLE}.increase_amount
+    
+  - measure: sum_increase_amount
+    type: sum
+    sql: ${TABLE}.increase_amount        
 
   - dimension: name
     type: string
