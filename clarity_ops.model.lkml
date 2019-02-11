@@ -23,4 +23,14 @@ explore: instance {
     type: inner
     sql_on: ${transaction.ref_license_count} = ${instance_license_count.id} ;;
   }
+
+  join: server_instance {
+    type: inner
+    sql_on: ${instance.ref_db_server} = ${server_instance.id} ;;
+  }
+
+  join: server_instance_database {
+    type: inner
+    sql_on: ${instance.ref_database} = ${server_instance_database.id} ;;
+  }
 }
