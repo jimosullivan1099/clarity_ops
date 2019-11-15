@@ -40,4 +40,9 @@ view: user {
     type: count
     drill_fields: [id, name, member_profile.count, _auth_assignment.count, _auth_log.count]
   }
+
+  measure: count_distinct {
+    type: count_distinct
+    drill_fields: [id, name]
+  }
 }
