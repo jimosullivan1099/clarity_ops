@@ -27,12 +27,6 @@ explore: instance {
     relationship: many_to_one
   }
 
-  join: user {
-    type:  inner
-    sql_on:  ${user.name} = ${transaction.username} ;;
-    relationship: one_to_many
-  }
-
   join: server_instance {
     type: inner
     sql_on: ${instance.ref_db_server} = ${server_instance.id} ;;

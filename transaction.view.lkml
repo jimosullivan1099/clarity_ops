@@ -59,6 +59,11 @@ view: transaction {
     sql: ${TABLE}.username ;;
   }
 
+  measure: count_distinct_username {
+    type: count_distinct
+    sql:  ${TABLE}.username ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, name, username]
