@@ -43,6 +43,7 @@ view: user {
 
   measure: count_distinct {
     type: count_distinct
+    sql_distinct_key: ${id} ;;
     drill_fields: [id, name]
   }
 }
