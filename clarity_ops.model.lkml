@@ -51,4 +51,12 @@ explore: clarity_licensing_v2 {
     sql_on: ${clarity_licensing_v2.ops_instance_id} = ${instance.id} ;;
     relationship: one_to_one
   }
+
+  join: server_instance {
+    view_label: "Clarity Licensing V2"
+    type: inner
+    sql_on: ${instance.ref_db_server} = ${server_instance.id} ;;
+    relationship: one_to_many
+    fields: [server_instance.name]
+  }
 }
