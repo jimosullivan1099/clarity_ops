@@ -45,19 +45,6 @@ datagroup: licencsing_cache {
   sql_trigger: SELECT 1 ;;
 }
 
-#Private explore
-explore: license_limits {
-  hidden: yes
-
-  join: license_counts {
-    type: inner
-    sql_on: ${license_limits.system_url} = ${license_counts.system_url} AND
-            ${license_limits.license_type_id} = ${license_counts.license_type_id} ;;
-    relationship: many_to_one
-  }
-}
-
-
 explore: clarity_licensing_v2 {
   label: "Clarity Licensing (v2)"
   from:  instances
@@ -115,5 +102,13 @@ explore: clarity_licensing_v2 {
     fields: [advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_count,
              advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_count_max]
     relationship: one_to_one
+  }
+
+  join: users {
+    type: inner
+    sql_on: ${clarity_licensing_v2.system_url} = ${users.system_url} AND
+      ${license_counts.license_type_id} = ${users.license_type_id} ;;
+    fields: [users.user_name, users.user_email, users.user_status, users.users_count]
+    relationship: one_to_many
   }
 }
