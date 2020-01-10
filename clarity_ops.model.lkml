@@ -1,7 +1,8 @@
 connection: "clarity_ops"
 
 # include all the views
-include: "*.view"
+include: "ops_views/*.view"
+include: "instance_aggregates_views/*.view"
 
 # include all the dashboards
 #include: "*.dashboard"
