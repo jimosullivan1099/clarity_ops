@@ -3,23 +3,28 @@ include: "../clarity_ops.model"
 view: master_database_servers {
   derived_table: {
     explore_source: master_database_servers {
-      column: instance_server_id {}
-      column: server_id {}
-      column: instance_server_name {}
+      column: id {}
+      column: name {}
+      column: ref_server {}
     }
     sql_trigger_value: SELECT 1 ;;
-    indexes: ["instance_server_id"]
+    indexes: ["id"]
   }
 
-  dimension: instance_server_id {
+  dimension: master_server_id {
+    sql: ${TABLE}.id ;;
     primary_key: yes
   }
 
-  dimension: server_id {}
+  dimension: server_id {
+    sql: ${TABLE}.ref_server ;;
+  }
 
-  dimension: instance_server_name {}
+  dimension: master_server_name {
+    sql: ${TABLE}.name ;;
+  }
 
-  measure: count {
+  measure: master_server_count {
     type: count
   }
 }

@@ -35,6 +35,6 @@ view: license_limits {
 
   measure: count {
     type: count
-    drill_fields: [license_limit_id, license_name]
+    drill_fields: [license_limit_id, license_limit_name]
   }
 }

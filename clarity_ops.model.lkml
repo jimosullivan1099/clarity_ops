@@ -105,30 +105,29 @@ explore: clarity_licensing_v2 {
     relationship: one_to_one
   }
 
-  join: master_server {
-    from: server_instance
+  join: master_database_servers {
     view_label: "Clarity Licensing V2"
     type: left_outer
-    sql_on: ${instance.ref_db_server} = ${master_server.id} ;;
+    sql_on: ${instance.ref_db_server} = ${master_database_servers.master_server_id} ;;
     relationship: one_to_many
-    fields: [master_server.name]
+    fields: [master_database_servers.master_server_name]
   }
 
-  join: slave_report_server {
-    from: server_instance
-    view_label: "Clarity Licensing V2"
-    type: left_outer
-    sql_on: ${instance.ref_db_slave_rep} = ${slave_report_server.id} ;;
-    relationship: one_to_many
-    fields: [slave_report_server.name]
-  }
+  #join: slave_report_server {
+  #  from: server_instance
+  #  view_label: "Clarity Licensing V2"
+  #  type: left_outer
+  #  sql_on: ${instance.ref_db_slave_rep} = ${slave_report_server.id} ;;
+  #  relationship: one_to_many
+  #  fields: [slave_report_server.name]
+  #}
 
-  join: slave_analysis_server {
-    from: server_instance
-    view_label: "Clarity Licensing V2"
-    type: left_outer
-    sql_on: ${instance.ref_db_slave_olap} = ${slave_analysis_server.id} ;;
-    relationship: one_to_many
-    fields: [slave_analysis_server.name]
-  }
+  #join: slave_analysis_server {
+  #  from: server_instance
+  #  view_label: "Clarity Licensing V2"
+  #  type: left_outer
+  #  sql_on: ${instance.ref_db_slave_olap} = ${slave_analysis_server.id} ;;
+  #  relationship: one_to_many
+  #  fields: [slave_analysis_server.name]
+  #}
 }
