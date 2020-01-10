@@ -42,5 +42,6 @@ explore: instance {
 }
 
 explore: clarity_licensing_v2 {
+  label: "Clarity Licensing"
   from:  instances
 }
