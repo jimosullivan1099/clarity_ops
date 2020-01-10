@@ -40,3 +40,7 @@ explore: instance {
     relationship: many_to_one
   }
 }
+
+explore: clarity_licensing_v2 {
+  from:  instances
+}
