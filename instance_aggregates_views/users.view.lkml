@@ -1,16 +1,21 @@
 view: users {
   sql_table_name: clarity_instance_aggregates.users ;;
-  drill_fields: [user_id]
 
+  dimension: prim_key {
+    primary_key: yes
+    hidden: yes
+    type: string
+    sql:  CONCAT(${TABLE}.system_url, '-', ${TABLE}.user_id) ;;
+  }
+
+  dimension: system_url {
+    type: string
+    sql: ${TABLE}.system_url ;;
+  }
   dimension: user_id {
     primary_key: yes
     type: number
     sql: ${TABLE}.user_id ;;
-  }
-
-  dimension: license_type_id {
-    type: number
-    sql: ${TABLE}.license_type_id ;;
   }
 
   dimension: ops_instance_id {
@@ -18,9 +23,9 @@ view: users {
     sql: ${TABLE}.ops_instance_id ;;
   }
 
-  dimension: system_url {
+  dimension: user_name {
     type: string
-    sql: ${TABLE}.system_url ;;
+    sql: ${TABLE}.user_name ;;
   }
 
   dimension: user_email {
@@ -28,9 +33,9 @@ view: users {
     sql: ${TABLE}.user_email ;;
   }
 
-  dimension: user_name {
-    type: string
-    sql: ${TABLE}.user_name ;;
+  dimension: user_status_id {
+    type: number
+    sql: ${TABLE}.user_status_id ;;
   }
 
   dimension: user_status {
@@ -38,13 +43,17 @@ view: users {
     sql: ${TABLE}.user_status ;;
   }
 
-  dimension: user_status_id {
+  dimension: license_type_id {
     type: number
-    sql: ${TABLE}.user_status_id ;;
+    sql: ${TABLE}.license_type_id ;;
   }
 
-  measure: count {
+  dimension: license_type {
+    type: string
+    sql: ${TABLE}.license_type ;;
+  }
+
+  measure: users_count {
     type: count
-    drill_fields: [user_id, user_name]
   }
 }

@@ -46,42 +46,6 @@ datagroup: licencsing_cache {
 }
 
 #Private explore
-explore: master_database_servers {
-  hidden: yes
-  from:  server_instance
-
-  join: instance {
-    type: inner
-    sql_on: ${master_database_servers.id} = ${instance.ref_db_server} ;;
-    relationship: one_to_many
-  }
-}
-
-#Private explore
-explore: reporting_database_servers {
-  hidden: yes
-  from:  server_instance
-
-  join: instance {
-    type: inner
-    sql_on: ${reporting_database_servers.id} = ${instance.ref_db_slave_rep} ;;
-    relationship: one_to_many
-  }
-}
-
-#Private explore
-explore: analysis_database_servers {
-  hidden: yes
-  from:  server_instance
-
-  join: instance {
-    type: inner
-    sql_on: ${analysis_database_servers.id} = ${instance.ref_db_slave_olap} ;;
-    relationship: one_to_many
-  }
-}
-
-#Private explore
 explore: license_limits {
   hidden: yes
 
@@ -109,27 +73,47 @@ explore: clarity_licensing_v2 {
     view_label: "Clarity Licensing V2"
     type: left_outer
     sql_on: ${instance.ref_db_server} = ${master_database_servers.master_server_id} ;;
-    relationship: one_to_many
+    relationship: many_to_one
     fields: [master_database_servers.master_server_name,
              master_database_servers.master_server_count]
   }
 
   join: reporting_database_servers {
-  #  from: server_instance
     view_label: "Clarity Licensing V2"
     type: left_outer
     sql_on: ${instance.ref_db_slave_rep} = ${reporting_database_servers.reporting_server_id} ;;
-    relationship: one_to_many
+    relationship: many_to_one
     fields: [reporting_database_servers.reporting_server_name,
              reporting_database_servers.reporting_server_count]
   }
 
-  #join: slave_analysis_server {
-  #  from: server_instance
-  #  view_label: "Clarity Licensing V2"
-  #  type: left_outer
-  #  sql_on: ${instance.ref_db_slave_olap} = ${slave_analysis_server.id} ;;
-  #  relationship: one_to_many
-  #  fields: [slave_analysis_server.name]
-  #}
+  join: analysis_database_servers {
+    view_label: "Clarity Licensing V2"
+    type: left_outer
+    sql_on: ${instance.ref_db_slave_olap} = ${analysis_database_servers.analysis_server_id} ;;
+    relationship: many_to_one
+    fields: [analysis_database_servers.analysis_server_name,
+             analysis_database_servers.analysis_server_count]
+  }
+
+  join: license_counts {
+    view_label: "Clarity Licensing V2"
+    type: left_outer
+    sql_on: ${clarity_licensing_v2.system_url} = ${license_counts.system_url} ;;
+    fields: [license_counts.license_type, license_counts.license_count_max,
+             license_counts.license_setup_fee_max, license_counts.license_monthly_fee_max,
+             license_counts.license_setup_fee_sum, license_counts.license_monthly_fee_sum]
+    relationship: one_to_many
+  }
+
+  join: advanced_privacy_and_security_compliance_license_limits {
+    view_label: "Clarity License Limits"
+    type: left_outer
+    sql_on: ${license_counts.system_url} = ${advanced_privacy_and_security_compliance_license_limits.system_url} AND
+            ${license_counts.license_type_id} = ${advanced_privacy_and_security_compliance_license_limits.license_type_id} AND
+            ${advanced_privacy_and_security_compliance_license_limits.license_limit_name} = "Advanced Privacy & Security Compliance" ;;
+    fields: [advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_count,
+             advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_count_max]
+    relationship: one_to_one
+  }
 }
