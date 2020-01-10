@@ -12,7 +12,7 @@ view: instances {
     sql: ${TABLE}.ops_instance_id ;;
   }
 
-  measure: instances_count {
+  measure: aggregate_instances_count {
     type: count
     drill_fields: [ops_instance_id]
   }
