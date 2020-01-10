@@ -42,6 +42,13 @@ explore: instance {
 }
 
 explore: clarity_licensing_v2 {
-  label: "Clarity Licensing"
+  label: "Clarity Licensing (v2)"
   from:  instances
+
+  join: instance {
+    view_label: "Clarity Licensing (v2)"
+    type: left_outer
+    sql_on: ${clarity_licensing_v2.ops_instance_id} = ${instance.id} ;;
+    relationship: one_to_one
+  }
 }
