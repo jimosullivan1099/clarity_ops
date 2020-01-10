@@ -52,11 +52,30 @@ explore: clarity_licensing_v2 {
     relationship: one_to_one
   }
 
-  join: server_instance {
+  join: master_server {
+    from: server_instance
     view_label: "Clarity Licensing V2"
     type: inner
-    sql_on: ${instance.ref_db_server} = ${server_instance.id} ;;
+    sql_on: ${instance.ref_db_server} = ${master_server.id} ;;
     relationship: one_to_many
-    fields: [server_instance.name]
+    fields: [master_server.name]
+  }
+
+  join: slave_report_server {
+    from: server_instance
+    view_label: "Clarity Licensing V2"
+    type: inner
+    sql_on: ${instance.ref_db_server} = ${slave_report_server.id} ;;
+    relationship: one_to_many
+    fields: [slave_report_server.name]
+  }
+
+  join: slave_analysis_server {
+    from: server_instance
+    view_label: "Clarity Licensing V2"
+    type: inner
+    sql_on: ${instance.ref_db_server} = ${slave_analysis_server.id} ;;
+    relationship: one_to_many
+    fields: [slave_analysis_server.name]
   }
 }
