@@ -41,6 +41,46 @@ explore: instance {
   }
 }
 
+datagroup: licencsing_cache {
+  sql_trigger: SELECT 1 ;;
+}
+
+#Private explore
+explore: master_database_servers {
+  hidden: yes
+  from:  server_instance
+
+  join: instance {
+    type: inner
+    sql_on: ${master_database_servers.id} = ${instance.ref_db_server} ;;
+    relationship: one_to_many
+  }
+}
+
+#Private explore
+explore: reporting_database_servers {
+  hidden: yes
+  from:  server_instance
+
+  join: instance {
+    type: inner
+    sql_on: ${reporting_database_servers.id} = ${instance.ref_db_slave_rep} ;;
+    relationship: one_to_many
+  }
+}
+
+#Private explore
+explore: analysis_database_servers {
+  hidden: yes
+  from:  server_instance
+
+  join: instance {
+    type: inner
+    sql_on: ${analysis_database_servers.id} = ${instance.ref_db_slave_olap} ;;
+    relationship: one_to_many
+  }
+}
+
 #Private explore
 explore: license_limits {
   hidden: yes

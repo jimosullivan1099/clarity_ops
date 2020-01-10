@@ -12,15 +12,15 @@ view: advanced_privacy_and_security_compliance_license_limits {
           value: "Advanced Privacy & Security Compliance"
         }
       }
-      sql_trigger_value: SELECT 1 ;;
-      indexes: ["instance_url","license_type_id"]
+      datagroup_trigger: licencsing_cache
+      indexes: ["system_url","license_type_id"]
     }
 
     dimension: prim_key {
       primary_key: yes
       hidden: yes
       type: string
-      sql:  CONCAT(${TABLE}.instance_url, '-', ${TABLE}.license_type_id) ;;
+      sql:  CONCAT(${TABLE}.system_url, '-', ${TABLE}.license_type_id) ;;
     }
 
     dimension: instance_url {}
