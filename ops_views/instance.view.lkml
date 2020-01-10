@@ -1,16 +1,16 @@
 view: instance {
-  dimension: id {
+  dimension: instance_id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
   }
 
-  dimension: description {
+  dimension: instance_description {
     type: string
     sql: ${TABLE}.description ;;
   }
 
-  dimension: hostname {
+  dimension: instance_hostname {
     type: string
     sql: ${TABLE}.hostname ;;
   }
@@ -33,12 +33,12 @@ view: instance {
     sql: ${TABLE}.jndi ;;
   }
 
-  dimension: looker_access {
+  dimension: instance_looker_access {
     type: yesno
     sql: ${TABLE}.looker_access ;;
   }
 
-  dimension: name {
+  dimension: instance_name {
     type: string
     sql: ${TABLE}.name ;;
   }
@@ -111,6 +111,6 @@ view: instance {
 
   measure: count {
     type: count
-    drill_fields: [id, internal_hostname, hostname, queue_server_username, name]
+    drill_fields: [instance_id, internal_hostname, instance_hostname, queue_server_username, instance_name]
   }
 }
