@@ -13,9 +13,9 @@ view: license_limits {
     sql: ${TABLE}.license_limit_count ;;
   }
 
-  dimension: license_name {
+  dimension: license_limit_name {
     type: string
-    sql: ${TABLE}.license_name ;;
+    sql: ${TABLE}.license_limit_name ;;
   }
 
   dimension: license_type_id {

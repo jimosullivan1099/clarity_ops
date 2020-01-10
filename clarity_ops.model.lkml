@@ -41,6 +41,19 @@ explore: instance {
   }
 }
 
+#Private explore
+explore: license_limits {
+  hidden: yes
+
+  join: license_counts {
+    type: inner
+    sql_on: ${license_limits.system_url} = ${license_counts.system_url} AND
+            ${license_limits.license_type_id} = ${license_counts.license_type_id} ;;
+    relationship: many_to_one
+  }
+}
+
+
 explore: clarity_licensing_v2 {
   label: "Clarity Licensing (v2)"
   from:  instances
