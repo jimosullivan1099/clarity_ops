@@ -55,7 +55,7 @@ explore: clarity_licensing_v2 {
   join: master_server {
     from: server_instance
     view_label: "Clarity Licensing V2"
-    type: inner
+    type: left_outer
     sql_on: ${instance.ref_db_server} = ${master_server.id} ;;
     relationship: one_to_many
     fields: [master_server.name]
@@ -64,8 +64,8 @@ explore: clarity_licensing_v2 {
   join: slave_report_server {
     from: server_instance
     view_label: "Clarity Licensing V2"
-    type: inner
-    sql_on: ${instance.ref_db_server} = ${slave_report_server.id} ;;
+    type: left_outer
+    sql_on: ${instance.ref_db_slave_rep} = ${slave_report_server.id} ;;
     relationship: one_to_many
     fields: [slave_report_server.name]
   }
@@ -73,8 +73,8 @@ explore: clarity_licensing_v2 {
   join: slave_analysis_server {
     from: server_instance
     view_label: "Clarity Licensing V2"
-    type: inner
-    sql_on: ${instance.ref_db_server} = ${slave_analysis_server.id} ;;
+    type: left_outer
+    sql_on: ${instance.ref_db_slave_olap} = ${slave_analysis_server.id} ;;
     relationship: one_to_many
     fields: [slave_analysis_server.name]
   }
