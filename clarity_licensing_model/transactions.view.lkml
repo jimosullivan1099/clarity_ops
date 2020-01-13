@@ -41,7 +41,6 @@ view: transactions {
 
   measure: transactions_count {
     type: count
-    sql: ${TABLE}.id ;;
   }
 
   measure: setup_fee_max {
