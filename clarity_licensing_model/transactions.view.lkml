@@ -39,6 +39,11 @@ view: transactions {
     sql: ${TABLE}.username ;;
   }
 
+  measure: transactions_count {
+    type: count
+    sql: ${TABLE}.id ;;
+  }
+
   measure: setup_fee_max {
     type: max
     sql: ${TABLE}.amount ;;
