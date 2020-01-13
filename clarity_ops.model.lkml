@@ -101,7 +101,9 @@ explore: clarity_licensing_v2 {
             ${advanced_privacy_and_security_compliance_license_limits.license_limit_name} = "Advanced Privacy & Security Compliance" ;;
     fields: [advanced_privacy_and_security_compliance_license_limits.license_limit_name,
              advanced_privacy_and_security_compliance_license_limits.license_limit_count,
-             advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_count_max]
+             advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_name,
+             advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_max,
+             advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_sum]
     relationship: one_to_one
   }
 
