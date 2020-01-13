@@ -1,6 +1,6 @@
-view: reporting_database_servers {
+view: reporting_servers {
 
-  sql_table_name:  server_instance ;;
+  sql_table_name:  clarity_ops.server_instance ;;
 
   dimension: reporting_server_id {
     sql: ${TABLE}.id ;;

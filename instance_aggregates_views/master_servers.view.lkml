@@ -1,6 +1,6 @@
-view: master_database_servers {
+view: master_servers {
 
-  sql_table_name:  server_instance ;;
+  sql_table_name:  clarity_ops.server_instance ;;
 
   dimension: master_server_id {
     sql: ${TABLE}.id ;;

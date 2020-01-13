@@ -56,31 +56,39 @@ explore: clarity_licensing_v2 {
     relationship: one_to_one
   }
 
-  join: master_database_servers {
+  join: master_servers {
     view_label: "Clarity Licensing V2"
     type: left_outer
-    sql_on: ${instance.ref_db_server} = ${master_database_servers.master_server_id} ;;
+    sql_on: ${instance.ref_db_server} = ${master_servers.master_server_id} ;;
     relationship: many_to_one
-    fields: [master_database_servers.master_server_name,
-             master_database_servers.master_server_count]
+    fields: [master_servers.master_server_name,
+             master_servers.master_server_count]
   }
 
-  join: reporting_database_servers {
+  join: reporting_servers {
     view_label: "Clarity Licensing V2"
     type: left_outer
-    sql_on: ${instance.ref_db_slave_rep} = ${reporting_database_servers.reporting_server_id} ;;
+    sql_on: ${instance.ref_db_slave_rep} = ${reporting_servers.reporting_server_id} ;;
     relationship: many_to_one
-    fields: [reporting_database_servers.reporting_server_name,
-             reporting_database_servers.reporting_server_count]
+    fields: [reporting_servers.reporting_server_name,
+             reporting_servers.reporting_server_count]
   }
 
-  join: analysis_database_servers {
+  join: analysis_servers {
     view_label: "Clarity Licensing V2"
     type: left_outer
-    sql_on: ${instance.ref_db_slave_olap} = ${analysis_database_servers.analysis_server_id} ;;
+    sql_on: ${instance.ref_db_slave_olap} = ${analysis_servers.analysis_server_id} ;;
     relationship: many_to_one
-    fields: [analysis_database_servers.analysis_server_name,
-             analysis_database_servers.analysis_server_count]
+    fields: [analysis_servers.analysis_server_name,
+             analysis_servers.analysis_server_count]
+  }
+
+  join: database_servers {
+    view_label: "Clarity Licensing V2"
+    type: left_outer
+    sql_on: ${instance.ref_database} = ${database_servers.database_id} ;;
+    relationship: one_to_one
+    fields: [database_servers.database_name]
   }
 
   join: license_counts {
