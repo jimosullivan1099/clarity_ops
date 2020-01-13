@@ -1,6 +1,5 @@
 view: license_limiter_options {
   sql_table_name: clarity_ops.license_limiter_options ;;
-  drill_fields: [id]
 
   dimension: id {
     primary_key: yes
@@ -8,23 +7,19 @@ view: license_limiter_options {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: name {
-    type: string
-    sql: ${TABLE}.name ;;
-  }
-
-  dimension: ref_limit {
+  dimension: license_limiter_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.ref_limit ;;
   }
 
-  dimension: value {
-    type: number
-    sql: ${TABLE}.value ;;
+  dimension: license_limit_option_name {
+    type: string
+    sql: ${TABLE}.name ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [id, name]
+  measure: license_limit_option_list {
+    type: list
+    list_field: license_limit_option_name
   }
 }

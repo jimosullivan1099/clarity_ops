@@ -1,6 +1,7 @@
 view: license_types {
 
   sql_table_name: license_type ;;
+
   dimension: license_types_id {
     hidden: yes
     primary_key: yes

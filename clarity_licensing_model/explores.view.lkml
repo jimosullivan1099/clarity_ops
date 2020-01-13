@@ -54,6 +54,28 @@ explore: aggregated_clarity_instances {
     relationship: many_to_one
   }
 
+  join: license_edition_licenses {
+    view_label: "Clarity Instances"
+    type: left_outer
+    sql: ${license_editions.license_edition_id} = ${license_edition_licenses.license_edition_id} ;;
+    relationship: one_to_many
+  }
+
+  join: licenses {
+    view_label: "Clarity Instances"
+    type: left_outer
+    sql: ${license_edition_licenses.license_id} = ${licenses.id} ;;
+    relationship: many_to_one
+  }
+
+  join: instance_license_counts {
+    view_label: "Clarity Instances"
+    type:  left_outer
+    sql: ${instances.instance_id} = ${instance_license_counts.instance_id} AND
+         ${licenses.id} = ${instance_license_counts.license_id} ;;
+    relationship: one_to_many
+  }
+
   join: aggregated_license_counts {
     view_label: "Aggregated Clarity Instances"
     type: left_outer

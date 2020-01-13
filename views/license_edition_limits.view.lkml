@@ -1,6 +1,5 @@
 view: license_edition_limits {
   sql_table_name: clarity_ops.license_edition_limits ;;
-  drill_fields: [id]
 
   dimension: id {
     primary_key: yes
@@ -8,22 +7,25 @@ view: license_edition_limits {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: ref_edition {
+  dimension: license_edition_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.ref_edition ;;
   }
 
-  dimension: ref_limit {
+  dimension: license_limiter_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.ref_limit ;;
   }
 
-  dimension: value {
-    type: number
+  measure: limit_value_max {
+    type: max
     sql: ${TABLE}.value ;;
   }
 
-  measure: count {
-    type: count
+  measure: limit_value_sum {
+    type: sum
+    sql: ${TABLE}.value ;;
   }
 }
