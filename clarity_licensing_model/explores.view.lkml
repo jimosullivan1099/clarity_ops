@@ -1,14 +1,14 @@
 # include all the views
 include: "*.view"
 
-explore: clarity_instances {
-  label: "Clarity Instances"
+explore: aggregated_clarity_instances {
+  label: "Aggregated Clarity Instances"
   from:  aggregated_instances
 
   join: instances {
     view_label: "Clarity Instances"
     type: left_outer
-    sql_on: ${clarity_instances.ops_instance_id} = ${instances.instance_id} ;;
+    sql_on: ${aggregated_clarity_instances.ops_instance_id} = ${instances.instance_id} ;;
     relationship: one_to_one
   }
 
@@ -55,9 +55,9 @@ explore: clarity_instances {
   }
 
   join: aggregated_license_counts {
-    view_label: "Clarity Instances"
+    view_label: "Aggregated Clarity Instances"
     type: left_outer
-    sql_on: ${clarity_instances.system_url} = ${aggregated_license_counts.system_url} ;;
+    sql_on: ${aggregated_clarity_instances.system_url} = ${aggregated_license_counts.system_url} ;;
     fields: [aggregated_license_counts.license_type, aggregated_license_counts.license_count_max,
       aggregated_license_counts.license_setup_fee_max, aggregated_license_counts.license_monthly_fee_max,
       aggregated_license_counts.license_setup_fee_sum, aggregated_license_counts.license_monthly_fee_sum]
@@ -65,15 +65,16 @@ explore: clarity_instances {
   }
 
   join: aggregated_users {
+    view_label: "Aggregated Clarity Instances"
     type: inner
-    sql_on: ${clarity_instances.system_url} = ${aggregated_users.system_url} AND
+    sql_on: ${aggregated_clarity_instances.system_url} = ${aggregated_users.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
     fields: [aggregated_users.user_name, aggregated_users.user_email, aggregated_users.user_status, aggregated_users.users_count]
     relationship: one_to_many
   }
 
   join: aggregated_advanced_privacy_and_security_compliance_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_advanced_privacy_and_security_compliance_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_advanced_privacy_and_security_compliance_license_limits.license_type_id} AND
@@ -86,7 +87,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_assessment_processor_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_assessment_processor_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_assessment_processor_license_limits.license_type_id} AND
@@ -99,7 +100,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_coc_limit_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_coc_limit_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_coc_limit_license_limits.license_type_id} AND
@@ -112,7 +113,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_coordinated_entry_and_community_queue_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_coordinated_entry_and_community_queue_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_coordinated_entry_and_community_queue_license_limits.license_type_id} AND
@@ -125,7 +126,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_create_additional_users_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_create_additional_users_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_create_additional_users_license_limits.license_type_id} AND
@@ -138,7 +139,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_custom_data_field_limit_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_custom_data_field_limit_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_custom_data_field_limit_license_limits.license_type_id} AND
@@ -151,7 +152,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_data_analytics_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_data_analytics_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_data_analytics_license_limits.license_type_id} AND
@@ -164,7 +165,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_data_import_tool_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_data_import_tool_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_data_import_tool_license_limits.license_type_id} AND
@@ -177,7 +178,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_direct_database_abstraction_layer_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = $aggregated_{direct_database_abstraction_layer_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_direct_database_abstraction_layer_license_limits.license_type_id} AND
@@ -190,7 +191,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_eligibility_engine_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_eligibility_engine_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_eligibility_engine_license_limits.license_type_id} AND
@@ -203,7 +204,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_outreach_and_encampments_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_outreach_and_encampments_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_outreach_and_encampments_license_limits.license_type_id} AND
@@ -216,7 +217,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_program_project_limit_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_program_project_limit_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = $aggregated_{program_project_limit_license_limits.license_type_id} AND
@@ -229,7 +230,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_referral_management_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_referral_management_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_referral_management_license_limits.license_type_id} AND
@@ -242,7 +243,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_self_service_license_purchase_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_self_service_license_purchase_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_self_service_license_purchase_license_limits.license_type_id} AND
@@ -255,7 +256,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_sharing_groups_and_department_management_license_limits {
-    view_label: "Clarity License Limits"
+    view_label: "Aggregated Instance License Limits"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_sharing_groups_and_department_management_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_sharing_groups_and_department_management_license_limits.license_type_id} AND
