@@ -1,11 +1,11 @@
 view: instance {
-  dimension: instance_id {
+  dimension: id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
   }
 
-  dimension: instance_description {
+  dimension: description {
     type: string
     sql: ${TABLE}.description ;;
   }
@@ -33,12 +33,12 @@ view: instance {
     sql: ${TABLE}.jndi ;;
   }
 
-  dimension: instance_looker_access {
+  dimension: looker_access {
     type: yesno
     sql: ${TABLE}.looker_access ;;
   }
 
-  dimension: instance_name {
+  dimension: name {
     type: string
     sql: ${TABLE}.name ;;
   }

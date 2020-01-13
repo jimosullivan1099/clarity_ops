@@ -12,7 +12,7 @@ explore: instance {
 
   join: instance_license_count {
     type: inner
-    sql_on: ${instance.instance_id} = ${instance_license_count.ref_instance} ;;
+    sql_on: ${instance.id} = ${instance_license_count.ref_instance} ;;
     relationship: one_to_many
   }
 
