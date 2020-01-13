@@ -41,6 +41,7 @@ explore: instance {
   }
 }
 
+
 datagroup: licencsing_cache {
   sql_trigger: SELECT 1 ;;
 }
