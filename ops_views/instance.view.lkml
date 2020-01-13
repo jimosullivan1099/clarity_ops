@@ -10,7 +10,7 @@ view: instance {
     sql: ${TABLE}.description ;;
   }
 
-  dimension: instance_hostname {
+  dimension: hostname {
     type: string
     sql: ${TABLE}.hostname ;;
   }
