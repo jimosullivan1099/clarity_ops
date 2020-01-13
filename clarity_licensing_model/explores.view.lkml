@@ -1,4 +1,3 @@
-# include all the views
 include: "*.view"
 
 explore: aggregated_clarity_instances {
