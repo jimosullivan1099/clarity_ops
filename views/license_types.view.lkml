@@ -15,6 +15,6 @@ view: license_types {
 
   measure: license_distribution_list {
     type: list
-    sql: GROUP_CONCAT(${license_distribution}) ;;
+    list_field: license_distribution
   }
 }

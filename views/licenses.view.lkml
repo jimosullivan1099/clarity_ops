@@ -20,6 +20,6 @@ view: licenses {
 
   measure: license_list {
     type: list
-    sql: GROUP_CONCAT(${license_title}) ;;
+    list_field: license_title
   }
 }

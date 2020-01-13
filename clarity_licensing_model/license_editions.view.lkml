@@ -15,6 +15,6 @@ view: license_editions {
 
   measure: license_edition_list {
     type: list
-    sql: GROUP_CONCAT(${license_edition_name}) ;;
+    list_field: license_edition_name
   }
 }

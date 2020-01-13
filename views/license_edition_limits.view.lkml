@@ -25,6 +25,5 @@ view: license_edition_limits {
 
   measure: count {
     type: count
-    drill_fields: [id]
   }
 }
