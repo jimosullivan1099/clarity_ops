@@ -5,7 +5,6 @@ view: advanced_privacy_and_security_compliance_license_limits {
   sql_table_name: clarity_instance_aggregates.license_limits ;;
 
   measure: advanced_privacy_and_security_compliance_limit_name {
-    type: max
     sql:  ${TABLE}.license_limit_name ;;
   }
 
