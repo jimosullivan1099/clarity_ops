@@ -1,4 +1,4 @@
-view: instances {
+view: aggregated_instances {
   sql_table_name: clarity_instance_aggregates.instances ;;
 
   dimension: system_url {
@@ -12,8 +12,7 @@ view: instances {
     sql: ${TABLE}.ops_instance_id ;;
   }
 
-  measure: aggregate_instances_count {
+  measure: aggregated_instances_count {
     type: count
-    drill_fields: [ops_instance_id]
   }
 }

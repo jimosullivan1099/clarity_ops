@@ -1,6 +1,6 @@
 include: "license_limits.view.lkml"
 
-view: sharing_groups_and_department_management_license_limits {
+view: aggregated_sharing_groups_and_department_management_license_limits {
 extends: [license_limits]
   sql_table_name: clarity_instance_aggregates.license_limits ;;
 

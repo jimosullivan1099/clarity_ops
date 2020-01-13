@@ -1,4 +1,4 @@
-view: users {
+view: aggregated_users {
   sql_table_name: clarity_instance_aggregates.users ;;
 
   dimension: prim_key {

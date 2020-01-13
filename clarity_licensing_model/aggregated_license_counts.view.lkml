@@ -1,4 +1,4 @@
-view: license_counts {
+view: aggregated_license_counts {
   sql_table_name: clarity_instance_aggregates.license_counts ;;
 
   dimension: prim_key {
