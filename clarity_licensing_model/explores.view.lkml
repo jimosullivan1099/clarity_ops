@@ -76,6 +76,13 @@ explore: aggregated_clarity_instances {
     relationship: one_to_many
   }
 
+  join: transactions {
+    view_label: "Transactions"
+    type: left_outer
+    sql: ${instance_license_counts.id} = ${transactions.instance_license_count_id} ;;
+    relationship: one_to_many
+  }
+
   join: aggregated_license_counts {
     view_label: "Aggregated Clarity Instances"
     type: left_outer

@@ -111,6 +111,6 @@ view: instance {
 
   measure: ops_instance_count {
     type: count
-    drill_fields: [instance_id, internal_hostname, instance_hostname, queue_server_username, instance_name]
+    drill_fields: [id, internal_hostname, hostname, queue_server_username, name]
   }
 }
