@@ -33,7 +33,7 @@ view: license_limits {
     sql: ${TABLE}.license_limit_name ;;
   }
 
-  dimension: license_limit_count {
+  measure: license_limit_count {
     type: number
     sql: ${TABLE}.license_limit_count ;;
   }

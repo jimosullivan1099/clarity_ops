@@ -99,7 +99,9 @@ explore: clarity_licensing_v2 {
     sql_on: ${license_counts.system_url} = ${advanced_privacy_and_security_compliance_license_limits.system_url} AND
             ${license_counts.license_type_id} = ${advanced_privacy_and_security_compliance_license_limits.license_type_id} AND
             ${advanced_privacy_and_security_compliance_license_limits.license_limit_name} = "Advanced Privacy & Security Compliance" ;;
-    fields: [advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_count_max]
+    fields: [advanced_privacy_and_security_compliance_license_limits.license_limit_name,
+             advanced_privacy_and_security_compliance_license_limits.license_limit_count,
+             advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_count_max]
     relationship: one_to_one
   }
 
