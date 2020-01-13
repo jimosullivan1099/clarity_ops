@@ -4,6 +4,10 @@ view: create_additional_users_license_limits {
 extends: [license_limits]
   sql_table_name: clarity_instance_aggregates.license_limits ;;
 
+  dimension: create_additional_users_license_limit {
+    sql:  ${TABLE}.license_limit_name ;;
+  }
+
   measure: create_additional_users_license_limit_name {
     sql:  ${TABLE}.license_limit_name ;;
   }
