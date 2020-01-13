@@ -13,6 +13,12 @@ view: transactions {
     sql: ${TABLE}.ref_license_count ;;
   }
 
+  dimension_group: date {
+    type: time
+    timeframes: [time, date, week, month]
+    sql: ${TABLE}.date ;;
+  }
+
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
