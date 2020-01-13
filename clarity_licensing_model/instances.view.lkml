@@ -26,19 +26,19 @@ view: instances {
   dimension: instance_type {
     case: {
       when: {
-        sql: ${TABLE}.instance_type_id = 1 ;;
+        sql: ${TABLE}.type = 1 ;;
         label: "Production"
       }
       when: {
-        sql: ${TABLE}.instance_type_id = 2 ;;
+        sql: ${TABLE}.type = 2 ;;
         label: "Training"
       }
       when: {
-        sql: ${TABLE}.instance_type_id = 3 ;;
+        sql: ${TABLE}.type = 3 ;;
         label: "Migration"
       }
       when: {
-        sql: ${TABLE}.instance_type_id = 4 ;;
+        sql: ${TABLE}.type = 4 ;;
         label: "Internal"
       }
       else: "Unknown"
