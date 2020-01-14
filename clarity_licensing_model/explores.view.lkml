@@ -12,6 +12,7 @@ explore: aggregated_clarity_instances {
       aggregated_license_counts.license_setup_fee_max, aggregated_license_counts.license_monthly_fee_max,
       aggregated_license_counts.license_setup_fee_sum, aggregated_license_counts.license_monthly_fee_sum]
     relationship: one_to_many
+    required_joins: [instance_licenses]
   }
 
   join: aggregated_users {
