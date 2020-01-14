@@ -263,8 +263,7 @@ explore: aggregated_clarity_instances {
   join: instance_license_counts {
     view_label: "Clarity Instances"
     type:  left_outer
-    sql_on: ${instances.instance_id} = ${instance_license_counts.instance_id} AND
-         ${licenses.id} = ${instance_license_counts.license_id} ;;
+    sql_on: ${instances.instance_id} = ${instance_license_counts.instance_id} ;;
     relationship: one_to_many
   }
 
