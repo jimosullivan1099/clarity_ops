@@ -321,6 +321,7 @@ explore: aggregated_clarity_instances {
     view_label: "Clarity Instance License Limits"
     type: left_outer
     sql_on: ${license_limiters.license_types_id} = ${license_types.license_types_id} ;;
+    relationship: many_to_one
   }
 
 }
