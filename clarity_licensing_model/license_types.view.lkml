@@ -13,9 +13,4 @@ view: license_types {
     type: string
     sql: ${TABLE}.name ;;
   }
-
-  measure: license_distribution_list {
-    type: list
-    list_field: license_distribution
-  }
 }

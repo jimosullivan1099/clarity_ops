@@ -2,6 +2,7 @@ view: instance_license_limiters {
   sql_table_name: clarity_ops.instance_license_limiters ;;
 
   dimension: id {
+    hidden: yes
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
