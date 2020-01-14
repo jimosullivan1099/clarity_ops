@@ -39,6 +39,15 @@ view: transactions {
     sql: ${TABLE}.username ;;
   }
 
+  dimension: setup_fee {
+    type: number
+    sql: ${TABLE}.amount ;;
+  }
+
+  dimension: monthly_fee {
+    type: number
+    sql: ${TABLE}.increase_amount ;;
+  }
   measure: transactions_count {
     type: count
   }
