@@ -47,7 +47,7 @@ view: instances {
 
   dimension: instance_looker_access {
     type: yesno
-    sql:  ${TABLE}.instance_looker_access ;;
+    sql:  ${TABLE}.looker_access ;;
   }
 
   dimension: license_edition_id {
