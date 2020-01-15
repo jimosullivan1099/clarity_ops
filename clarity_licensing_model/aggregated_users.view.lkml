@@ -43,6 +43,7 @@ view: aggregated_users {
   }
 
   dimension: license_type_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.license_type_id ;;
   }
