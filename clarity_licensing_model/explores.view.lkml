@@ -9,6 +9,8 @@ explore: aggregated_clarity_instances {
     type: inner
     sql_on: ${aggregated_clarity_instances.system_url} = ${aggregated_license_counts.system_url} ;;
     relationship: one_to_many
+    fields: [aggregated_license_counts.license_count, aggregated_license_counts.license_setup_fee,
+             aggregated_license_counts.license_monthly_fee]
     #required_joins: [instance_licenses]
   }
 
