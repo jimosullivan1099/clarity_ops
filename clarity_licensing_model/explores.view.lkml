@@ -40,14 +40,14 @@ explore: clarity_instances {
   }
 
   join: instance_license_counts {
-    view_label: "Clarity Instances"
+    view_label: "Clarity Instance Licenses"
     type:  inner
     sql_on: ${clarity_instances.instance_id} = ${instance_license_counts.instance_id} ;;
     relationship: one_to_many
   }
 
   join: licenses {
-    view_label: "Clarity Instances"
+    view_label: "Clarity Instance Licenses"
     type: inner
     sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
     relationship: many_to_one
@@ -55,21 +55,21 @@ explore: clarity_instances {
   }
 
   join: transactions {
-    view_label: "Clarity Instance Transactions"
+    view_label: "Clarity Instance Licenses"
     type: inner
     sql_on: ${instance_license_counts.id} = ${transactions.instance_license_count_id} ;;
     relationship: one_to_many
   }
 
   join: instance_license_limiters {
-    view_label: "Clarity Instance License Limits"
+    view_label: "Clarity Instance Licenses"
     type: inner
     sql_on: ${clarity_instances.instance_id} = ${instance_license_limiters.instance_id} ;;
     relationship: one_to_many
   }
 
   join: license_limiters {
-    view_label: "Clarity Instance License Limits"
+    view_label: "Clarity Instance Licenses"
     type: inner
     sql_on: ${instance_license_limiters.license_limiter_id} = ${license_limiters.id}
        AND  ${licenses.id} = ${license_limiters.license_types_id};;
@@ -77,14 +77,14 @@ explore: clarity_instances {
   }
 
   join: license_editions {
-    view_label: "Clarity License Editions"
+    view_label: "Clarity Instance Licenses"
     type: inner
     sql_on: ${clarity_instances.license_edition_id} = ${license_editions.license_edition_id} ;;
     relationship: many_to_one
   }
 
   join: license_edition_licenses {
-    view_label: "Clarity License Editions"
+    view_label: "Clarity Instance Licenses"
     type: inner
     sql_on: ${license_editions.license_edition_id} = ${license_edition_licenses.license_edition_id}
         AND ${licenses.id} = ${license_edition_licenses.license_id} ;;

@@ -20,13 +20,8 @@ view: instance_license_limiters {
     sql: ${TABLE}.ref_limit ;;
   }
 
-  measure: limit_value_max {
-    type: max
-    sql: ${TABLE}.value ;;
-  }
-
-  measure: limit_value_sum {
-    type: sum
+  dimension: license_limit_value {
+    type: number
     sql: ${TABLE}.value ;;
   }
 }
