@@ -10,7 +10,16 @@ explore: aggregated_clarity_instances {
     sql_on: ${aggregated_clarity_instances.system_url} = ${aggregated_users.system_url} ;;
       # AND  ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
     relationship: one_to_many
+    fields: [aggregated_users.user_id, aggregated_users.user_name, aggregated_users.user_email,
+             aggregated_users.user_status, aggregated_users.license_type, aggregated_users.users_count]
   }
+
+
+
+
+
+
+
 #
 #  join: aggregated_license_counts {
 #    view_label: "Aggregated Clarity Instances"
