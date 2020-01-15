@@ -99,7 +99,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_license_counts {
-    view_label: "Aggregated Clarity Instances"
+    view_label: "Aggregated Clarity Licenses"
     type: left_outer
     sql_on: ${aggregated_instances.system_url} = ${aggregated_license_counts.system_url} ;;
     relationship: one_to_many
@@ -128,7 +128,7 @@ explore: clarity_instances {
   }
 
   join: license_limits {
-    view_label: "Aggregated Clarity Instance License Limits"
+    view_label: "Aggregated Clarity Licenses"
     type: left_outer
     sql_on: ${aggregated_license_counts.system_url} = ${license_limits.system_url}
        AND  ${aggregated_license_counts.license_type_id} = ${license_limits.license_type_id} ;;

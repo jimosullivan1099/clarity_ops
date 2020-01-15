@@ -31,22 +31,22 @@ view: instance_license_counts {
     sql: ${TABLE}.count ;;
   }
 
-  measure: setup_fee_max {
+  measure: license_setup_fee_max {
     type: max
     sql: ${TABLE}.base_amount ;;
   }
 
-  measure: setup_fee_sum {
+  measure: license_setup_fee_sum {
     type: sum
     sql: ${TABLE}.base_amount ;;
   }
 
-  measure: monthly_fee_max {
+  measure: license_monthly_fee_max {
     type: max
     sql: ${TABLE}.amount ;;
   }
 
-  measure: monthly_sum {
+  measure: license_monthly_sum {
     type: sum
     sql: ${TABLE}.amount ;;
   }
