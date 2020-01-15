@@ -29,11 +29,9 @@ explore: aggregated_clarity_instances {
     type: inner
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_advanced_privacy_and_security_compliance_license_limits.system_url} AND
             ${aggregated_license_counts.license_type_id} = ${aggregated_advanced_privacy_and_security_compliance_license_limits.license_type_id} AND
-            $aggregated_{advanced_privacy_and_security_compliance_license_limits.license_limit_name} = "Advanced Privacy & Security Compliance" ;;
-    fields: [aggregated_advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit,
-      aggregated_advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_name,
-      aggregated_advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_max,
-      aggregated_advanced_privacy_and_security_compliance_license_limits.advanced_privacy_and_security_compliance_limit_sum]
+            ${aggregated_advanced_privacy_and_security_compliance_license_limits.license_limit_name} = "Advanced Privacy & Security Compliance" ;;
+    fields: [aggregated_advanced_privacy_and_security_compliance_license_limits.license_limit_name,
+      aggregated_advanced_privacy_and_security_compliance_license_limits.license_limit_count]
     relationship: one_to_one
   }
 
