@@ -4,33 +4,25 @@ explore: aggregated_clarity_instances {
   label: "Aggregated Clarity Instances"
   from:  aggregated_instances
 
+  join: aggregated_license_counts {
+    view_label: "Aggregated Clarity Instances"
+    type: inner
+    sql_on: ${aggregated_clarity_instances.system_url} = ${aggregated_license_counts.system_url} ;;
+    relationship: one_to_many
+    #required_joins: [instance_licenses]
+  }
+
   join: aggregated_users {
     view_label: "Aggregated Clarity Instances"
     type: inner
     sql_on: ${aggregated_clarity_instances.system_url} = ${aggregated_users.system_url} ;;
-      # AND  ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
+       # AND  ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
     relationship: one_to_many
     fields: [aggregated_users.user_id, aggregated_users.user_name, aggregated_users.user_email,
              aggregated_users.user_status, aggregated_users.license_type, aggregated_users.users_count]
   }
 
 
-
-
-
-
-
-#
-#  join: aggregated_license_counts {
-#    view_label: "Aggregated Clarity Instances"
-#    type: inner
-#    sql_on: ${aggregated_clarity_instances.system_url} = ${aggregated_license_counts.system_url} ;;
-#    fields: [aggregated_license_counts.license_type, aggregated_license_counts.license_count_max,
-#      aggregated_license_counts.license_setup_fee_max, aggregated_license_counts.license_monthly_fee_max,
-#      aggregated_license_counts.license_setup_fee_sum, aggregated_license_counts.license_monthly_fee_sum]
-#    relationship: one_to_many
-#    required_joins: [instance_licenses]
-#  }
 
 #  join: aggregated_advanced_privacy_and_security_compliance_license_limits {
 #    view_label: "Aggregated Clarity Instance License Limits"
