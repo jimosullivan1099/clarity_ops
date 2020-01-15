@@ -1,7 +1,7 @@
 view: transactions {
   sql_table_name: clarity_ops.transaction ;;
 
-  dimension: id {
+  dimension: transaction_id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
