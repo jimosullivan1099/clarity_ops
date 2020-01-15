@@ -15,4 +15,16 @@ view: aggregated_advanced_privacy_and_security_compliance_license_limits {
     type: number
     sql:  ${TABLE}.license_limit_count ;;
   }
+
+  measure: license_limit_name_measure {
+    label: "Advanced Privacy and Securiy Complince Limit Name"
+    type: string
+    sql:  ${TABLE}.license_limit_name ;;
+  }
+
+  measure: license_limit_count_measure {
+    label: "Advanced Privacy And Security Compliance Limit Count"
+    type: number
+    sql:  ${TABLE}.license_limit_count ;;
+  }
 }

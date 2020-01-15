@@ -4,21 +4,14 @@ view: aggregated_custom_data_field_limit_license_limits {
 extends: [license_limits]
   sql_table_name: clarity_instance_aggregates.license_limits ;;
 
-  dimension: custom_data_field_limit_license_limit {
+  dimension: custom_data_field_limit_license_limit_name {
+    type: string
     sql:  ${TABLE}.license_limit_name ;;
   }
 
-  measure: custom_data_field_limit_license_limit_name {
-    sql:  ${TABLE}.license_limit_name ;;
-  }
-
-  measure: custom_data_field_limit_license_limit_max {
-    type: max
+  dimension: custom_data_field_limit_license_limit_count {
+    type:  number
     sql:  ${TABLE}.license_limit_count ;;
   }
 
-  measure: custom_data_field_limit_license_limit_sum {
-    type: sum
-    sql:  ${TABLE}.license_limit_count ;;
-  }
 }
