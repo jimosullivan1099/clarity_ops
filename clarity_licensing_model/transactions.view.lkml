@@ -13,61 +13,62 @@ view: transactions {
     sql: ${TABLE}.ref_license_count ;;
   }
 
-  dimension_group: date {
+  dimension_group: transaction_date {
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.date ;;
   }
 
-  dimension: name {
+  dimension: transaction_name {
     type: string
     sql: ${TABLE}.name ;;
   }
 
-  dimension: reconciled {
+  dimension: transaction_reconciled {
     type: number
     sql: ${TABLE}.reconciled ;;
   }
 
-  dimension: reconciled_monthly {
+  dimension: transaction_reconciled_monthly {
     type: number
     sql: ${TABLE}.reconciled_monthly ;;
   }
 
-  dimension: username {
+  dimension: transaction_username {
     type: string
     sql: ${TABLE}.username ;;
   }
 
-  dimension: setup_fee {
+  dimension: transaction_setup_fee {
     type: number
     sql: ${TABLE}.amount ;;
   }
 
-  dimension: monthly_fee {
+  dimension: transaction_monthly_fee {
     type: number
     sql: ${TABLE}.increase_amount ;;
   }
+
   measure: transactions_count {
     type: count
   }
 
-  measure: setup_fee_max {
+  measure: transaction_setup_fee_max {
     type: max
     sql: ${TABLE}.amount ;;
   }
 
-  measure: setup_fee_sum {
+  measure: transaction_setup_fee_sum {
     type: sum
     sql: ${TABLE}.amount ;;
   }
 
-  measure: monthly_fee_max {
+  measure: transaction_monthly_fee_max {
     type: max
     sql: ${TABLE}.increase_amount ;;
   }
 
-  measure: monthly_fee_sum {
+  measure: transaction_monthly_fee_sum {
     type: sum
     sql: ${TABLE}.increase_amount ;;
   }
