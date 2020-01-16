@@ -136,8 +136,19 @@ explore: clarity_instances {
     fields: [license_limit_name, license_limit_count]
   }
 
+  join: instance_looker_users {
+    view_label: "Clarity Instance Looker users"
+    type: inner
+    sql_on: ${clarity_instances.instance_id} = ${instance_looker_users.instance_id} ;;
+    relationship: one_to_many
+  }
 
-
+  join: looker_users {
+    view_label: "Clarity Instance Looker users"
+    type: inner
+    sql_on: ${instance_looker_users.looker_user_id} = ${looker_users.id};;
+    relationship: one_to_many
+  }
 
 #  join: aggregated_advanced_privacy_and_security_compliance_license_limits {
 #    view_label: "Aggregated Clarity Instance License Limits"
