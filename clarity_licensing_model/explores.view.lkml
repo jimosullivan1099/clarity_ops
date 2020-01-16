@@ -1,5 +1,24 @@
 include: "*.view"
 
+explore: looker_users {
+  label: "Looker Users"
+  from:  looker_users
+
+  join: instance_looker_users {
+    view_label: "Looker Users"
+    type: left_outer
+    sql_on: ${looker_users.id} = ${instance_looker_users.looker_user_id} ;;
+    relationship: one_to_many
+  }
+
+  join: instances {
+    view_label: "Looker Users"
+    type: left_outer
+    sql_on: ${instance_looker_users.instance_id} = ${instances.instance_id} ;;
+    relationship: one_to_many
+  }
+}
+
 explore: clarity_instances {
   label: "Clarity Instances"
   from:  instances
