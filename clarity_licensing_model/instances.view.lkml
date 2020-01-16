@@ -83,4 +83,9 @@ view: instances {
   measure: ops_instance_count {
     type: count
   }
+
+  measure: instances {
+    type: list
+    list_field: instance_hostname
+  }
 }
