@@ -46,6 +46,5 @@ view: looker_users {
   measure: count {
     label: "Looker Users"
     type: count
-    sql: ${TABLE}.id ;;
   }
 }
