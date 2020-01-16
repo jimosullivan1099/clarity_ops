@@ -1,5 +1,5 @@
 view: instance_looker_users {
-  sql_table_name:  clarity_instance_aggregates.looker_users ;;
+  sql_table_name:  clarity_instance_aggregates.instance_looker_users ;;
 
   dimension: looker_user_id {
     hidden: yes
