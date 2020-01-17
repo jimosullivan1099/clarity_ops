@@ -26,15 +26,16 @@ view: looker_users {
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
+    action: {
+      label: "Test my action"
+      url: "https://actions.torregrosa.me/my_action/execute"
+    }
+
   }
 
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
-    action: {
-      label: "Test my action"
-      url: "https://actions.torregrosa.me/my_action/execute"
-    }
   }
 
   dimension: last_name {
