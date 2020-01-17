@@ -30,12 +30,7 @@ view: looker_users {
       label: "Test my action"
       url: "https://actions.torregrosa.me/actions/my_action/execute"
       form_url: "https://actions.torregrosa.me/actions/my_action/form"
-      param: {
-        name: "param_name"
-        value: "param_value"
-      }
     }
-
   }
 
   dimension: first_name {
