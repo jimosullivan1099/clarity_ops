@@ -31,6 +31,10 @@ view: looker_users {
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
+    action: {
+      label: "Test my action"
+      url: "https://actions.torregrosa.me/my_action/execute"
+    }
   }
 
   dimension: last_name {
