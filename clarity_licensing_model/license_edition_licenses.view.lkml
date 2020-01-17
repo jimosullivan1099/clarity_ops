@@ -21,11 +21,13 @@ view: license_edition_licenses {
   }
 
   measure: license_edition_count_max {
+    hidden: yes
     type: max
     sql: ${TABLE}.value ;;
   }
 
   measure: license_edition_count_sum {
+    hidden: yes
     type: sum
     sql: ${TABLE}.value ;;
   }
