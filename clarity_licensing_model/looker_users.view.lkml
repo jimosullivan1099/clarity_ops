@@ -29,6 +29,7 @@ view: looker_users {
     action: {
       label: "Test my action"
       url: "https://actions.torregrosa.me/actions/my_action/execute"
+      form_url: "https://actions.torregrosa.me/actions/my_action/form"
     }
 
   }
