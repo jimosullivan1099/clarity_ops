@@ -28,7 +28,7 @@ view: looker_users {
     sql: ${TABLE}.email ;;
     action: {
       label: "Test my action"
-      url: "https://actions.torregrosa.me/my_action/execute"
+      url: "https://actions.torregrosa.me/actions/my_action/execute"
     }
 
   }
