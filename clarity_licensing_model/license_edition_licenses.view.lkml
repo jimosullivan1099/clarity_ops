@@ -20,12 +20,12 @@ view: license_edition_licenses {
     sql: ${TABLE}.ref_license ;;
   }
 
-  measure: license_count_max {
+  measure: license_edition_count_max {
     type: max
     sql: ${TABLE}.value ;;
   }
 
-  measure: license_count_sum {
+  measure: license_edition_count_sum {
     type: sum
     sql: ${TABLE}.value ;;
   }
