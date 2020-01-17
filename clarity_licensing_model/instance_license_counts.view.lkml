@@ -31,6 +31,11 @@ view: instance_license_counts {
     sql: ${TABLE}.count ;;
   }
 
+  measure: license_count_sum {
+    type: sum
+    sql: ${TABLE}.count ;;
+  }
+
   measure: license_setup_fee_max {
     type: max
     sql: ${TABLE}.base_amount ;;
