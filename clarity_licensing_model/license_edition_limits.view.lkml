@@ -19,13 +19,8 @@ view: license_edition_limits {
     sql: ${TABLE}.ref_limit ;;
   }
 
-  measure: limit_value_max {
-    type: max
-    sql: ${TABLE}.value ;;
-  }
-
-  measure: limit_value_sum {
-    type: sum
+  dimension: license_edition_limit_value {
+    type: number
     sql: ${TABLE}.value ;;
   }
 }

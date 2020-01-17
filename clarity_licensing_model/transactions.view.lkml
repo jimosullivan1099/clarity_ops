@@ -42,11 +42,13 @@ view: transactions {
   dimension: transaction_setup_fee {
     type: number
     sql: ${TABLE}.amount ;;
+    value_format_name: usd
   }
 
   dimension: transaction_monthly_fee {
     type: number
     sql: ${TABLE}.increase_amount ;;
+    value_format_name: usd
   }
 
   measure: transactions_count {
@@ -54,22 +56,28 @@ view: transactions {
   }
 
   measure: transaction_setup_fee_max {
+    hidden: yes
     type: max
     sql: ${TABLE}.amount ;;
+    value_format_name: usd
   }
 
   measure: transaction_setup_fee_sum {
     type: sum
     sql: ${TABLE}.amount ;;
+    value_format_name: usd
   }
 
   measure: transaction_monthly_fee_max {
+    hidden: yes
     type: max
     sql: ${TABLE}.increase_amount ;;
+    value_format_name: usd
   }
 
   measure: transaction_monthly_fee_sum {
     type: sum
     sql: ${TABLE}.increase_amount ;;
+    value_format_name: usd
   }
 }

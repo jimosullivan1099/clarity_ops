@@ -27,6 +27,7 @@ view: instance_license_counts {
   }
 
   measure: license_count_max {
+    hidden: yes
     type: max
     sql: ${TABLE}.count ;;
   }
@@ -36,23 +37,41 @@ view: instance_license_counts {
     sql: ${TABLE}.count ;;
   }
 
+ dimension: license_setup_fee {
+    type: number
+    sql: ${TABLE}.base_amount ;;
+    value_format_name: usd
+  }
+
   measure: license_setup_fee_max {
+    hidden: yes
     type: max
     sql: ${TABLE}.base_amount ;;
+    value_format_name: usd
   }
 
   measure: license_setup_fee_sum {
     type: sum
     sql: ${TABLE}.base_amount ;;
+    value_format_name: usd
+  }
+
+ dimension: license_monthly_fee {
+    type: number
+    sql: ${TABLE}.amount ;;
+    value_format_name: usd
   }
 
   measure: license_monthly_fee_max {
+    hidden: yes
     type: max
     sql: ${TABLE}.amount ;;
+    value_format_name: usd
   }
 
   measure: license_monthly_sum {
     type: sum
     sql: ${TABLE}.amount ;;
+    value_format_name: usd
   }
 }

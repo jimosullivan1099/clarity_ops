@@ -49,11 +49,13 @@ view: aggregated_license_counts {
   }
 
   measure: license_setup_fee_max {
+    hidden: yes
     type: max
     sql:  ${TABLE}.license_amount ;;
     value_format_name: usd
   }
   measure: license_monthly_fee_max {
+    hidden: yes
     type: max
     sql:  ${TABLE}.license_increase_amount ;;
     value_format_name: usd
