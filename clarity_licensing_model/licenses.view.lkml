@@ -3,7 +3,7 @@ view: licenses {
 
   dimension: id {
     hidden: yes
-    primary_key: yes
+    #primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
   }
@@ -14,6 +14,7 @@ view: licenses {
   }
 
   dimension: license_title {
+    primary_key:  yes
     type: string
     sql: ${TABLE}.title ;;
   }
