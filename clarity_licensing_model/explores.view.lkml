@@ -140,7 +140,7 @@ explore: clarity_instances {
     view_label: "Aggregated Clarity Instances"
     type: inner
     sql_on: ${aggregated_license_counts.system_url} = ${aggregated_users.system_url}
-      ¡AND  ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
+       AND  ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
     #sql_on: ${clarity_instances.instance_id} = ${aggregated_users.ops_instance_id}
     #   AND  ${licenses.license_title} = ${aggregated_users.license_type} ;;
     relationship: one_to_many
