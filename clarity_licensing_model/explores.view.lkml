@@ -133,7 +133,7 @@ explore: clarity_instances {
              aggregated_license_counts.license_monthly_fee_max,
              aggregated_license_counts.license_setup_fee_sum,
              aggregated_license_counts.license_monthly_fee_sum]
-    required_joins: [licenses]
+#    required_joins: [licenses]
   }
 
   join: aggregated_users {
