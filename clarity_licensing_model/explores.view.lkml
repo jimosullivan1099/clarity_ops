@@ -121,7 +121,7 @@ explore: clarity_instances {
     view_label: "Aggregated Clarity Licenses"
     type: left_outer
     sql_on: ${aggregated_instances.system_url} = ${aggregated_license_counts.system_url}
-        AND ${licenses.id} = ${aggregated_license_counts.license_type_id};;
+        AND ${licenses.license_title} = ${aggregated_license_counts.license_type};;
     relationship: one_to_many
     fields: [aggregated_license_counts.license_type,
              aggregated_license_counts.license_count,

@@ -8,7 +8,7 @@ view: licenses {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: license_decription {
+  dimension: license_description {
     type: string
     sql: ${TABLE}.decription ;;
   }
