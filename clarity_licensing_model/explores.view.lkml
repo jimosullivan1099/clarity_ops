@@ -120,7 +120,9 @@ explore: clarity_instances {
   join: aggregated_license_counts {
     view_label: "Aggregated Clarity Licenses"
     type: left_outer
-    sql_on: ${aggregated_instances.system_url} = ${aggregated_license_counts.system_url}
+    # sql_on: ${aggregated_instances.system_url} = ${aggregated_license_counts.system_url}
+    #    AND ${licenses.license_title} = ${aggregated_license_counts.license_type};;
+    sql_on: ${clarity_instances.instance_id} = ${aggregated_license_counts.ops_instance_id}
         AND ${licenses.license_title} = ${aggregated_license_counts.license_type};;
     relationship: one_to_many
     fields: [aggregated_license_counts.license_type,
@@ -131,14 +133,16 @@ explore: clarity_instances {
              aggregated_license_counts.license_monthly_fee_max,
              aggregated_license_counts.license_setup_fee_sum,
              aggregated_license_counts.license_monthly_fee_sum]
-    required_joins: [licenses]
+    #required_joins: [licenses]
   }
 
   join: aggregated_users {
     view_label: "Aggregated Clarity Instances"
     type: left_outer
-    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_users.system_url}
-       AND  ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
+    #sql_on: ${aggregated_license_counts.system_url} = ${aggregated_users.system_url}
+    #   AND  ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
+    sql_on: ${clarity_instances.instance_id} = ${aggregated_users.ops_instance_id}
+       AND  ${licenses.license_title} = ${aggregated_users.license_type} ;;
     relationship: one_to_many
     fields: [aggregated_users.user_id,
              aggregated_users.user_name,
@@ -150,8 +154,10 @@ explore: clarity_instances {
   join: license_limits {
     view_label: "Aggregated Clarity Licenses"
     type: left_outer
-    sql_on: ${aggregated_license_counts.system_url} = ${license_limits.system_url}
-       AND  ${aggregated_license_counts.license_type_id} = ${license_limits.license_type_id} ;;
+    #sql_on: ${aggregated_license_counts.system_url} = ${license_limits.system_url}
+    #   AND  ${aggregated_license_counts.license_type_id} = ${license_limits.license_type_id} ;;
+    sql_on: ${clarity_instances.instance_id} = ${aggregated_users.ops_instance_id}
+       AND  ${licenses.license_title} = ${aggregated_users.license_type} ;;
     relationship: one_to_many
     fields: [license_limit_name, license_limit_count]
   }
@@ -169,198 +175,5 @@ explore: clarity_instances {
     sql_on: ${instance_looker_users.looker_user_id} = ${looker_users.id};;
     relationship: one_to_many
   }
-
-#  join: aggregated_advanced_privacy_and_security_compliance_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_advanced_privacy_and_security_compliance_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_advanced_privacy_and_security_compliance_license_limits.license_type_id} AND
-#            ${aggregated_advanced_privacy_and_security_compliance_license_limits.license_limit_name} = "Advanced Privacy & Security Compliance" ;;
-#    fields: [aggregated_advanced_privacy_and_security_compliance_license_limits.license_limit_name_measure,
-#      aggregated_advanced_privacy_and_security_compliance_license_limits.license_limit_count_measure]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_assessment_processor_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_assessment_processor_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_assessment_processor_license_limits.license_type_id} AND
-#            ${aggregated_assessment_processor_license_limits.license_limit_name} = "Assessment Processor" ;;
-#    fields: [aggregated_assessment_processor_license_limits.assessment_processor_license_limit,
-#      aggregated_assessment_processor_license_limits.assessment_processor_license_limit_name,
-#      aggregated_assessment_processor_license_limits.assessment_processor_license_limit_max,
-#      aggregated_assessment_processor_license_limits.assessment_processor_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_coc_limit_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_coc_limit_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_coc_limit_license_limits.license_type_id} AND
-#            ${aggregated_coc_limit_license_limits.license_limit_name} = "CoC Limit" ;;
-#    fields: [aggregated_coc_limit_license_limits.coc_limit_license_limit,
-#      aggregated_coc_limit_license_limits.coc_limit_license_limit_name,
-#      aggregated_coc_limit_license_limits.coc_limit_license_limit_max,
-#      aggregated_coc_limit_license_limits.coc_limit_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_coordinated_entry_and_community_queue_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_coordinated_entry_and_community_queue_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_coordinated_entry_and_community_queue_license_limits.license_type_id} AND
-#            ${aggregated_coordinated_entry_and_community_queue_license_limits.license_limit_name} = "Coordinated Entry & Community Queue" ;;
-#    fields: [aggregated_coordinated_entry_and_community_queue_license_limits.coordinated_entry_and_community_queue_license_limit,
-#      aggregated_coordinated_entry_and_community_queue_license_limits.coordinated_entry_and_community_queue_license_limit_name,
-#      aggregated_coordinated_entry_and_community_queue_license_limits.coordinated_entry_and_community_queue_license_limit_max,
-#      aggregated_coordinated_entry_and_community_queue_license_limits.coordinated_entry_and_community_queue_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_create_additional_users_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_create_additional_users_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_create_additional_users_license_limits.license_type_id} AND
-#            ${aggregated_create_additional_users_license_limits.license_limit_name} = "Create Additional Users" ;;
-#    fields: [aggregated_create_additional_users_license_limits.create_additional_users_license_limit,
-#      aggregated_create_additional_users_license_limits.create_additional_users_license_limit_name,
-#      aggregated_create_additional_users_license_limits.create_additional_users_license_limit_max,
-#      aggregated_create_additional_users_license_limits.create_additional_users_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_custom_data_field_limit_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_custom_data_field_limit_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_custom_data_field_limit_license_limits.license_type_id} AND
-#            ${aggregated_custom_data_field_limit_license_limits.license_limit_name} = "Custom Data Field Limit" ;;
-#    fields: [aggregated_custom_data_field_limit_license_limits.custom_data_field_limit_license_limit,
-#      aggregated_custom_data_field_limit_license_limits.custom_data_field_limit_license_limit_name,
-#      aggregated_custom_data_field_limit_license_limits.custom_data_field_limit_license_limit_max,
-#      aggregated_custom_data_field_limit_license_limits.custom_data_field_limit_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_data_analytics_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_data_analytics_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_data_analytics_license_limits.license_type_id} AND
-#            ${aggregated_data_analytics_license_limits.license_limit_name} = "Data Analytics" ;;
-#    fields: [aggregated_data_analytics_license_limits.data_analytics_license_limit,
-#      aggregated_data_analytics_license_limits.data_analytics_license_limit_name,
-#      aggregated_data_analytics_license_limits.data_analytics_license_limit_max,
-#      aggregated_data_analytics_license_limits.data_analytics_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_data_import_tool_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_data_import_tool_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_data_import_tool_license_limits.license_type_id} AND
-#            ${aggregated_data_import_tool_license_limits.license_limit_name} = "Data Import Tool" ;;
-#    fields: [aggregated_data_import_tool_license_limits.data_import_tool_license_limit,
-#      aggregated_data_import_tool_license_limits.data_import_tool_license_limit_name,
-#      aggregated_data_import_tool_license_limits.data_import_tool_license_limit_max,
-#      aggregated_data_import_tool_license_limits.data_import_tool_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_direct_database_abstraction_layer_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = $aggregated_{direct_database_abstraction_layer_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_direct_database_abstraction_layer_license_limits.license_type_id} AND
-#            ${aggregated_direct_database_abstraction_layer_license_limits.license_limit_name} = "Direct Database Abstraction Layer" ;;
-#    fields: [aggregated_direct_database_abstraction_layer_license_limits.direct_database_abstraction_layer_license_limit,
-#      aggregated_direct_database_abstraction_layer_license_limits.direct_database_abstraction_layer_license_limit_name,
-#      aggregated_direct_database_abstraction_layer_license_limits.direct_database_abstraction_layer_license_limit_max,
-#      aggregated_direct_database_abstraction_layer_license_limits.direct_database_abstraction_layer_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_eligibility_engine_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_eligibility_engine_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_eligibility_engine_license_limits.license_type_id} AND
-#            ${aggregated_eligibility_engine_license_limits.license_limit_name} = "Eligibility Engine" ;;
-#    fields: [aggregated_eligibility_engine_license_limits.eligibility_engine_license_limit,
-#      aggregated_eligibility_engine_license_limits.eligibility_engine_license_limit_name,
-#      aggregated_eligibility_engine_license_limits.eligibility_engine_license_limit_max,
-#      aggregated_eligibility_engine_license_limits.eligibility_engine_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_outreach_and_encampments_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_outreach_and_encampments_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_outreach_and_encampments_license_limits.license_type_id} AND
-#            ${aggregated_outreach_and_encampments_license_limits.license_limit_name} = "Outreach & Encampments" ;;
-#    fields: [aggregated_outreach_and_encampments_license_limits.outreach_and_encampments_license_limit,
-#      aggregated_outreach_and_encampments_license_limits.outreach_and_encampments_license_limit_name,
-#      aggregated_outreach_and_encampments_license_limits.outreach_and_encampments_license_limit_max,
-#      aggregated_outreach_and_encampments_license_limits.outreach_and_encampments_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_program_project_limit_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_program_project_limit_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = $aggregated_{program_project_limit_license_limits.license_type_id} AND
-#            ${aggregated_program_project_limit_license_limits.license_limit_name} = "Program/Project Limit" ;;
-#    fields: [aggregated_program_project_limit_license_limits.program_project_limit_license_limit,
-#      aggregated_program_project_limit_license_limits.program_project_limit_license_limit_name,
-#      aggregated_program_project_limit_license_limits.program_project_limit_license_limit_max,
-#      aggregated_program_project_limit_license_limits.program_project_limit_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_referral_management_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_referral_management_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_referral_management_license_limits.license_type_id} AND
-#            ${aggregated_referral_management_license_limits.license_limit_name} = "Referral Management" ;;
-#    fields: [aggregated_referral_management_license_limits.referral_management_license_limit,
-#      aggregated_referral_management_license_limits.referral_management_license_limit_name,
-#      aggregated_referral_management_license_limits.referral_management_license_limit_max,
-#      aggregated_referral_management_license_limits.referral_management_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_self_service_license_purchase_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_self_service_license_purchase_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_self_service_license_purchase_license_limits.license_type_id} AND
-#            ${aggregated_self_service_license_purchase_license_limits.license_limit_name} = "Self-Service License Purchase" ;;
-#    fields: [aggregated_self_service_license_purchase_license_limits.self_service_license_purchase_license_limit,
-#      aggregated_self_service_license_purchase_license_limits.self_service_license_purchase_license_limit_name,
-#      aggregated_self_service_license_purchase_license_limits.self_service_license_purchase_license_limit_max,
-#      aggregated_self_service_license_purchase_license_limits.self_service_license_purchase_license_limit_sum]
-#    relationship: one_to_one
-#  }
-
-#  join: aggregated_sharing_groups_and_department_management_license_limits {
-#    view_label: "Aggregated Clarity Instance License Limits"
-#    type: inner
-#    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_sharing_groups_and_department_management_license_limits.system_url} AND
-#            ${aggregated_license_counts.license_type_id} = ${aggregated_sharing_groups_and_department_management_license_limits.license_type_id} AND
-#            ${aggregated_sharing_groups_and_department_management_license_limits.license_limit_name} = "Sharing Groups & Department Management" ;;
-#    fields: [aggregated_sharing_groups_and_department_management_license_limits.sharing_groups_and_department_management_license_limit,
-#      aggregated_sharing_groups_and_department_management_license_limits.sharing_groups_and_department_management_license_limit_name,
-#      aggregated_sharing_groups_and_department_management_license_limits.sharing_groups_and_department_management_license_limit_max,
-#      aggregated_sharing_groups_and_department_management_license_limits.sharing_groups_and_department_management_license_limit_sum]
-#    relationship: one_to_one
-#  }
 
 }
