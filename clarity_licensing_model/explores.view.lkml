@@ -121,7 +121,7 @@ explore: clarity_instances {
     view_label: "Aggregated Clarity Licenses"
     type: left_outer
     sql_on: ${aggregated_instances.system_url} = ${aggregated_license_counts.system_url}
-        AND ${instance_license_counts.id} = ${aggregated_license_counts.license_type_id};;
+        AND ${licenses.id} = ${aggregated_license_counts.license_type_id};;
     relationship: one_to_many
     fields: [aggregated_license_counts.license_type,
              aggregated_license_counts.license_count,
@@ -131,7 +131,7 @@ explore: clarity_instances {
              aggregated_license_counts.license_monthly_fee_max,
              aggregated_license_counts.license_setup_fee_sum,
              aggregated_license_counts.license_monthly_fee_sum]
-    required_joins: [instance_license_counts]
+    required_joins: [licenses]
   }
 
   join: aggregated_users {
