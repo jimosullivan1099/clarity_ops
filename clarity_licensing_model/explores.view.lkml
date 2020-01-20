@@ -70,7 +70,7 @@ explore: clarity_instances {
     type: inner
     sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
     relationship: many_to_one
-#    sql_where: ${instance_licenses.license_title} = ${aggregated_license_counts.license_type} ;;
+    sql_where: ${instance_licenses.license_title} = ${aggregated_license_counts.license_type} ;;
   }
 
   join: transactions {
@@ -120,8 +120,8 @@ explore: clarity_instances {
   join: aggregated_license_counts {
     view_label: "Aggregated Clarity Licenses"
     type: inner
-      sql_on: ${aggregated_instances.system_url} = ${aggregated_license_counts.system_url}
-         AND ${licenses.license_title} = ${aggregated_license_counts.license_type};;
+      sql_on: ${aggregated_instances.system_url} = ${aggregated_license_counts.system_url} ;;
+        # AND ${licenses.license_title} = ${aggregated_license_counts.license_type};;
     #sql_on: ${clarity_instances.instance_id} = ${aggregated_license_counts.ops_instance_id}
     #    AND ${licenses.license_title} = ${aggregated_license_counts.license_type};;
     relationship: one_to_many
@@ -139,8 +139,8 @@ explore: clarity_instances {
   join: aggregated_users {
     view_label: "Aggregated Clarity Instances"
     type: inner
-    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_users.system_url} ;;
-       # AND  ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
+    sql_on: ${aggregated_license_counts.system_url} = ${aggregated_users.system_url}
+      ¡AND  ${aggregated_license_counts.license_type_id} = ${aggregated_users.license_type_id} ;;
     #sql_on: ${clarity_instances.instance_id} = ${aggregated_users.ops_instance_id}
     #   AND  ${licenses.license_title} = ${aggregated_users.license_type} ;;
     relationship: one_to_many
