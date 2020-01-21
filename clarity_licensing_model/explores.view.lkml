@@ -227,7 +227,7 @@ explore: clarity_instances_v2{
   }
 
   join: user_license {
-    view_label: "Clarity Instance Licenses"
+    view_label: "Aggregated Clarity Licenses"
     from:  licenses
     type: left_outer
     sql_on: ${aggregated_license_counts.license_type} = ${user_license.license_title} ;;
