@@ -272,7 +272,7 @@ explore: clarity_instances_v2{
 
   join: aggregated_users {
     view_label: "Clarity Instances V2"
-    type: inner
+    type: left_outer
     sql_on: ${clarity_instances_v2.instance_id} = ${aggregated_users.ops_instance_id}
       AND  ${licenses.license_title} = ${aggregated_users.license_type} ;;
     relationship: one_to_many
