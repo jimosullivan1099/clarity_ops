@@ -269,4 +269,17 @@ explore: clarity_instances_v2{
       AND ${licenses.id} = ${license_edition_licenses.license_id} ;;
     relationship: one_to_many
   }
+
+  join: aggregated_users {
+    view_label: "Clarity Instances V2"
+    type: inner
+    sql_on: ${clarity_instances_v2.instance_id} = ${aggregated_users.ops_instance_id}
+      AND  ${license.license_title} = ${aggregated_users.license_type} ;;
+    relationship: one_to_many
+    fields: [aggregated_users.user_id,
+      aggregated_users.user_name,
+      aggregated_users.user_email,
+      aggregated_users.user_status,
+      aggregated_users.users_count]
+  }
 }
