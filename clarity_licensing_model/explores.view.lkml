@@ -306,7 +306,7 @@ explore: clarity_instance_aggregates{
 
   join: aggregated_users {
     view_label: "Clarity Instance Aggregates"
-    type: inner
+    type: left_outer
     sql_on: ${clarity_instance_aggregates.system_url} = ${aggregated_users.system_url} ;;
     relationship: one_to_many
     fields: [aggregated_users.user_id,
@@ -318,7 +318,7 @@ explore: clarity_instance_aggregates{
 
   join: aggregated_license_counts {
     view_label: "Clarity Instance Aggregates"
-    type: inner
+    type: left_outer
     sql_on: ${aggregated_users.system_url} = ${aggregated_license_counts.system_url}
       AND ${aggregated_users.license_type_id} = ${aggregated_license_counts.license_type_id} ;;
     relationship: one_to_one
