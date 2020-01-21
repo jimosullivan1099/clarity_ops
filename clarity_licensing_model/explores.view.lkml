@@ -214,7 +214,7 @@ explore: clarity_instances_v2{
     view_label: "Aggregated Clarity Instances"
     type: left_outer
     sql_on: ${clarity_instances_v2.instance_id} = ${aggregated_instances.ops_instance_id} ;;
-    relationship: many_to_one
+    relationship: one_to_one
   }
 
   join: aggregated_users {
