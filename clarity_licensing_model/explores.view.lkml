@@ -288,7 +288,7 @@ explore: clarity_instances_v2{
     type: left_outer
     sql_on: ${aggregated_users.system_url} = ${aggregated_license_counts.system_url}
         AND ${aggregated_users.license_type_id} = ${aggregated_license_counts.license_type_id} ;;
-    relationship: many_to_one
+    relationship: one_to_one
     fields: [aggregated_license_counts.license_type,
       aggregated_license_counts.license_count,
       aggregated_license_counts.license_setup_fee,
