@@ -229,7 +229,7 @@ explore: clarity_instances_v2{
   join: user_license {
     view_label: "Clarity Licenses"
     from:  licenses
-    type: full_outer
+    type: cross
     sql_on: ${aggregated_license_counts.license_type} = ${user_license.license_title} ;;
     relationship: one_to_many
   }
