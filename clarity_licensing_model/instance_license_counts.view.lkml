@@ -74,4 +74,14 @@ view: instance_license_counts {
     sql: ${TABLE}.amount ;;
     value_format_name: usd
   }
+
+  dimension: license_active {
+    type: yesno
+    sql: ${TABLE}.active ;;
+  }
+
+  dimension: license_no_limit {
+    type: yesno
+    sql: ${TABLE}.no_limit ;;
+  }
 }
