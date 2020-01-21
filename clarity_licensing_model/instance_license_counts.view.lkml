@@ -69,7 +69,7 @@ view: instance_license_counts {
     value_format_name: usd
   }
 
-  measure: license_monthly_sum {
+  measure: license_monthly_fee_sum {
     type: sum
     sql: ${TABLE}.amount ;;
     value_format_name: usd
