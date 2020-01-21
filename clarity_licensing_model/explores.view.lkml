@@ -274,7 +274,7 @@ explore: clarity_instances_v2{
     view_label: "Clarity Instances V2"
     type: inner
     sql_on: ${clarity_instances_v2.instance_id} = ${aggregated_users.ops_instance_id}
-      AND  ${license.license_title} = ${aggregated_users.license_type} ;;
+      AND  ${licenses.license_title} = ${aggregated_users.license_type} ;;
     relationship: one_to_many
     fields: [aggregated_users.user_id,
       aggregated_users.user_name,
