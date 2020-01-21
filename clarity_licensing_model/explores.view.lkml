@@ -184,7 +184,7 @@ explore: clarity_instances_v2{
   from:  instances
 
   join: master_servers {
-    view_label: "Clarity Instances"
+    view_label: "Clarity Instances V2"
     type: inner
     sql_on: ${clarity_instances_v2.master_db_server_id} = ${master_servers.master_server_id} ;;
     relationship: many_to_one
@@ -193,7 +193,7 @@ explore: clarity_instances_v2{
   }
 
   join: reporting_servers {
-    view_label: "Clarity Instances"
+    view_label: "Clarity Instances V2"
     type: inner
     sql_on: ${clarity_instances_v2.slave_report_db_server_id} = ${reporting_servers.reporting_server_id} ;;
     relationship: many_to_one
@@ -202,7 +202,7 @@ explore: clarity_instances_v2{
   }
 
   join: analysis_servers {
-    view_label: "Clarity Instances"
+    view_label: "Clarity Instances V2"
     type: inner
     sql_on: ${clarity_instances_v2.slave_analysis_db_server_id} = ${analysis_servers.analysis_server_id} ;;
     relationship: many_to_one
@@ -211,7 +211,7 @@ explore: clarity_instances_v2{
   }
 
   join: database_servers {
-    view_label: "Clarity Instances"
+    view_label: "Clarity Instances V2"
     type: inner
     sql_on: ${clarity_instances_v2.database_id} = ${database_servers.database_id} ;;
     relationship: one_to_one
