@@ -48,6 +48,7 @@ view: aggregated_agencies {
     sql: ${TABLE}.added_date ;;
   }
 
+
   measure: agencies_count {
     type: count
   }
