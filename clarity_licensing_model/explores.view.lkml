@@ -205,8 +205,8 @@ explore: clarity_instances_v2{
     view_label: "Clarity Instances V2"
     from: aggregated_users
     type: left_outer
-    sql_on: ${clarity_instances_v2.instance_id} = ${aggregated_users.ops_instance_id}
-       AND  ${licenses.license_title} = ${aggregated_users.license_type};;
+    sql_on: ${clarity_instances_v2.instance_id} = ${ops_aggregated_users.ops_instance_id}
+       AND  ${licenses.license_title} = ${ops_aggregated_users.license_type};;
     relationship: one_to_many
     fields: [aggregated_users.users_count]
   }
