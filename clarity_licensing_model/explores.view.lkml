@@ -297,6 +297,38 @@ explore: clarity_instances_v2{
       aggregated_license_counts.license_monthly_fee_max,
       aggregated_license_counts.license_setup_fee_sum,
       aggregated_license_counts.license_monthly_fee_sum]
-    required_joins: [licenses]
+  }
+}
+
+explore: clarity_instance_aggregates{
+  label: "Clarity Instance Aggregates"
+  from:  aggregated_instances
+
+  join: aggregated_users {
+    view_label: "Clarity Instance Aggregates"
+    type: inner
+    sql_on: ${clarity_instance_aggregates.system_url} = ${aggregated_users.system_url} ;;
+    relationship: one_to_many
+    fields: [aggregated_users.user_id,
+      aggregated_users.user_name,
+      aggregated_users.user_email,
+      aggregated_users.user_status,
+      aggregated_users.users_count]
+  }
+
+  join: aggregated_license_counts {
+    view_label: "Clarity Instance Aggregates"
+    type: inner
+    sql_on: ${aggregated_users.system_url} = ${aggregated_license_counts.system_url}
+      AND ${aggregated_users.license_type_id} = ${aggregated_license_counts.license_type_id} ;;
+    relationship: one_to_one
+    fields: [aggregated_license_counts.license_type,
+      aggregated_license_counts.license_count,
+      aggregated_license_counts.license_setup_fee,
+      aggregated_license_counts.license_monthly_fee,
+      aggregated_license_counts.license_setup_fee_max,
+      aggregated_license_counts.license_monthly_fee_max,
+      aggregated_license_counts.license_setup_fee_sum,
+      aggregated_license_counts.license_monthly_fee_sum]
   }
 }
