@@ -123,6 +123,19 @@ explore: clarity_instances {
       ops_aggregated_users.users_count]
   }
 
+  join: ops_aggregated_agencies {
+    view_label: "Clarity Instances"
+    from: aggregated_agencies
+    type: left_outer
+    sql_on: ${clarity_instances.instance_id} = ${ops_aggregated_agencies.ops_instance_id} ;;
+    relationship: one_to_many
+    fields: [ops_aggregated_agencies.agency_id,
+      ops_aggregated_agencies.agency_name,
+      ops_aggregated_agencies.agency_status,
+      ops_aggregated_agencies.agency_added_date,
+      ops_aggregated_agencies.agency_count]
+  }
+
   join: aggregated_instances {
     view_label: "Aggregated Clarity Instances"
     type: left_outer
