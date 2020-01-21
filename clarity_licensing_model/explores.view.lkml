@@ -231,7 +231,7 @@ explore: clarity_instances_v2{
     view_label: "Clarity Instance Licenses"
     from:  licenses
     type: left_outer
-    sql_on: ${aggregated_license_counts.license_type_id} = ${user_license.license_title} ;;
+    sql_on: ${aggregated_license_counts.license_type} = ${user_license.license_title} ;;
     fieds: []
     relationship: one_to_many
   }
