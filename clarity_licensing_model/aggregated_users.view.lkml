@@ -53,6 +53,18 @@ view: aggregated_users {
     sql: ${TABLE}.license_type ;;
   }
 
+  dimension_group: user_added_date {
+    type: time
+    timeframes: [time, date, week, month]:
+    sql: ${TABLE}.user_added_date ;;
+  }
+
+  dimension_group: user_last_visited_date {
+    type: time
+    timeframes: [time, date, week, month]:
+    sql: ${TABLE}.user_last_visited_date ;;
+  }
+
   measure: users_count {
     type: count
   }
