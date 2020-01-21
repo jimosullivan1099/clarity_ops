@@ -224,7 +224,6 @@ explore: clarity_instances_v2{
       aggregated_license_counts.license_monthly_fee_max,
       aggregated_license_counts.license_setup_fee_sum,
       aggregated_license_counts.license_monthly_fee_sum]
-    required_joins: [user_license]
   }
 
   join: user_license {
@@ -232,7 +231,6 @@ explore: clarity_instances_v2{
     from:  licenses
     type: left_outer
     sql_on: ${aggregated_license_counts.license_type} = ${user_license.license_title} ;;
-    fieds: []
     relationship: one_to_many
   }
 }
