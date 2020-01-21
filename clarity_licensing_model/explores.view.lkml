@@ -70,7 +70,6 @@ explore: clarity_instances {
     type: inner
     sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
     relationship: many_to_one
-    sql_where: ${licenses.license_title} = ${aggregated_license_counts.license_type} ;;
   }
 
   join: transactions {
