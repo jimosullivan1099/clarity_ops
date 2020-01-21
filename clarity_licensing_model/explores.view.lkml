@@ -198,7 +198,6 @@ explore: clarity_instances_v2{
     type: inner
     sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
     relationship: many_to_one
-    #sql_where: ${licenses.license_title} = ${aggregated_license_counts.license_type} ;;
   }
 
   join: ops_aggregated_users {
@@ -244,7 +243,6 @@ explore: clarity_instances_v2{
       aggregated_license_counts.license_monthly_fee_max,
       aggregated_license_counts.license_setup_fee_sum,
       aggregated_license_counts.license_monthly_fee_sum]
-    required_joins: [licenses]
   }
 }
 
