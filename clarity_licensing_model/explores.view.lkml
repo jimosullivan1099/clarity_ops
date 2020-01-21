@@ -177,3 +177,96 @@ explore: clarity_instances {
   }
 
 }
+
+
+explore: clarity_instances_V2{
+  label: "Clarity Instances"
+  from:  instances
+
+  join: master_servers {
+    view_label: "Clarity Instances"
+    type: inner
+    sql_on: ${clarity_instances.master_db_server_id} = ${master_servers.master_server_id} ;;
+    relationship: many_to_one
+    fields: [master_servers.master_server_name,
+      master_servers.master_server_count]
+  }
+
+  join: reporting_servers {
+    view_label: "Clarity Instances"
+    type: inner
+    sql_on: ${clarity_instances.slave_report_db_server_id} = ${reporting_servers.reporting_server_id} ;;
+    relationship: many_to_one
+    fields: [reporting_servers.reporting_server_name,
+      reporting_servers.reporting_server_count]
+  }
+
+  join: analysis_servers {
+    view_label: "Clarity Instances"
+    type: inner
+    sql_on: ${clarity_instances.slave_analysis_db_server_id} = ${analysis_servers.analysis_server_id} ;;
+    relationship: many_to_one
+    fields: [analysis_servers.analysis_server_name,
+      analysis_servers.analysis_server_count]
+  }
+
+  join: database_servers {
+    view_label: "Clarity Instances"
+    type: inner
+    sql_on: ${clarity_instances.database_id} = ${database_servers.database_id} ;;
+    relationship: one_to_one
+    fields: [database_servers.database_name]
+  }
+
+  join: instance_license_counts {
+    view_label: "Clarity Instance Licenses"
+    type:  inner
+    sql_on: ${clarity_instances.instance_id} = ${instance_license_counts.instance_id} ;;
+    relationship: one_to_many
+  }
+
+  join: licenses {
+    view_label: "Clarity Instance Licenses"
+    type: inner
+    sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
+    relationship: many_to_one
+    sql_where: ${licenses.license_title} = ${aggregated_license_counts.license_type} ;;
+  }
+
+  join: transactions {
+    view_label: "Clarity Instance Licenses"
+    type: inner
+    sql_on: ${instance_license_counts.id} = ${transactions.instance_license_count_id} ;;
+    relationship: one_to_many
+  }
+
+  join: instance_license_limiters {
+    view_label: "Clarity Instance Licenses"
+    type: inner
+    sql_on: ${clarity_instances.instance_id} = ${instance_license_limiters.instance_id} ;;
+    relationship: one_to_many
+  }
+
+  join: license_limiters {
+    view_label: "Clarity Instance Licenses"
+    type: inner
+    sql_on: ${instance_license_limiters.license_limiter_id} = ${license_limiters.id}
+      AND  ${licenses.id} = ${license_limiters.license_types_id};;
+    relationship: many_to_one
+  }
+
+  join: license_editions {
+    view_label: "Clarity Instance Licenses"
+    type: inner
+    sql_on: ${clarity_instances.license_edition_id} = ${license_editions.license_edition_id} ;;
+    relationship: many_to_one
+  }
+
+  join: license_edition_licenses {
+    view_label: "Clarity Instance Licenses"
+    type: inner
+    sql_on: ${license_editions.license_edition_id} = ${license_edition_licenses.license_edition_id}
+      AND ${licenses.id} = ${license_edition_licenses.license_id} ;;
+    relationship: one_to_many
+  }
+}
