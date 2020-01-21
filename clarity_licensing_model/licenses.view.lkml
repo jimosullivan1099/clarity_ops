@@ -2,6 +2,7 @@ view: licenses {
   sql_table_name: clarity_ops.license ;;
 
   dimension: id {
+    primary_key: yes
     hidden: yes
     #primary_key: yes
     type: number
@@ -14,7 +15,6 @@ view: licenses {
   }
 
   dimension: license_title {
-    primary_key:  yes
     type: string
     sql: ${TABLE}.title ;;
   }
