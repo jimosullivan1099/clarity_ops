@@ -183,32 +183,32 @@ explore: clarity_instances_v2{
   label: "Clarity Instances V2"
   from:  instances
 
-#  join: instance_license_counts {
-#    view_label: "Clarity Instance Licenses"
-#    type:  inner
-#    sql_on: ${clarity_instances_v2.instance_id} = ${instance_license_counts.instance_id} ;;
-#    relationship: one_to_many
-#    fields: [instance_license_counts.license_count,
-#             instance_license_counts.license_setup_fee,
-#             instance_license_counts.license_monthly_fee]
-#  }
+  join: instance_license_counts {
+    view_label: "Clarity Instance Licenses"
+    type:  inner
+    sql_on: ${clarity_instances_v2.instance_id} = ${instance_license_counts.instance_id} ;;
+    relationship: one_to_many
+    fields: [instance_license_counts.license_count,
+             instance_license_counts.license_setup_fee,
+             instance_license_counts.license_monthly_fee]
+  }
 
-#  join: licenses {
-#    view_label: "Clarity Instance Licenses"
-#    type: inner
-#    sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
-#    relationship: many_to_one
-#  }
+  join: licenses {
+    view_label: "Clarity Instance Licenses"
+    type: inner
+    sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
+    relationship: many_to_one
+  }
 
-#  join: ops_aggregated_users {
-#    view_label: "Clarity Instances V2"
-#    from: aggregated_users
-#    type: left_outer
-#    sql_on: ${clarity_instances_v2.instance_id} = ${ops_aggregated_users.ops_instance_id}
-#       AND  ${licenses.license_title} = ${ops_aggregated_users.license_type};;
-#    relationship: one_to_many
-#    fields: [ops_aggregated_users.users_count]
-#  }
+  join: ops_aggregated_users {
+    view_label: "Clarity Instances V2"
+    from: aggregated_users
+    type: left_outer
+    sql_on: ${clarity_instances_v2.instance_id} = ${ops_aggregated_users.ops_instance_id}
+       AND  ${licenses.license_title} = ${ops_aggregated_users.license_type};;
+    relationship: one_to_many
+    fields: [ops_aggregated_users.users_count]
+  }
 
   join: aggregated_instances {
     view_label: "Aggregated Clarity Instances"
