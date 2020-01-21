@@ -286,7 +286,7 @@ explore: clarity_instances_v2{
   join: aggregated_license_counts {
     view_label: "Aggregated Clarity Licenses"
     type: inner
-    sql_on: ${aggregated_instances.system_url} = ${aggregated_license_counts.system_url}
+    sql_on: ${aggregated_users.system_url} = ${aggregated_license_counts.system_url}
         AND ${aggregated_users.license_type_id} = ${aggregated_license_counts.license_type_id} ;;
     relationship: one_to_many
     fields: [aggregated_license_counts.license_type,
