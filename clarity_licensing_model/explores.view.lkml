@@ -212,14 +212,14 @@ explore: clarity_instances_v2{
 
   join: aggregated_instances {
     view_label: "Aggregated Clarity Instances"
-    type: inner
+    type: left_outer
     sql_on: ${clarity_instances_v2.instance_id} = ${aggregated_instances.ops_instance_id} ;;
     relationship: many_to_one
   }
 
   join: aggregated_users {
     view_label: "Aggregated Clarity Instances"
-    type: inner
+    type: left_outer
     sql_on: ${aggregated_instances.system_url} = ${aggregated_users.system_url} ;;
     relationship: one_to_many
     fields: [aggregated_users.user_id,
@@ -231,10 +231,10 @@ explore: clarity_instances_v2{
 
   join: aggregated_license_counts {
     view_label: "Aggregated Clarity Licenses"
-    type: inner
+    type: left_outer
     sql_on: ${aggregated_users.system_url} = ${aggregated_license_counts.system_url}
        AND  ${aggregated_users.license_type_id} = ${aggregated_license_counts.license_type_id} ;;
-    relationship: one_to_many
+    relationship: one_to_one
     fields: [aggregated_license_counts.license_type,
       aggregated_license_counts.license_count,
       aggregated_license_counts.license_setup_fee,
