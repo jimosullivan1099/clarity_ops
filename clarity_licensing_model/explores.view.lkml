@@ -114,7 +114,7 @@ explore: clarity_instances {
     from: aggregated_users
     type: left_outer
     sql_on: ${clarity_instances.instance_id} = ${ops_aggregated_users.ops_instance_id}
-      AND  ${licenses.license_title} = ${ops_aggregated_users.license_type};;
+       AND  ${licenses.license_title} = ${ops_aggregated_users.license_type} ;;
     relationship: one_to_many
     fields: [ops_aggregated_users.user_id,
       ops_aggregated_users.user_name,
@@ -129,10 +129,6 @@ explore: clarity_instances {
     type: left_outer
     sql_on: ${clarity_instances.instance_id} = ${ops_aggregated_agencies.ops_instance_id} ;;
     relationship: one_to_many
-    fields: [ops_aggregated_agencies.agency_id,
-      ops_aggregated_agencies.agency_name,
-      ops_aggregated_agencies.agency_status,
-      ops_aggregated_agencies.agency_count]
   }
 
   join: aggregated_instances {
