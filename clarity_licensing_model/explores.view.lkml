@@ -183,26 +183,25 @@ explore: clarity_instances_v2{
   label: "Clarity Instances V2"
   from:  instances
 
-  join: instance_license_counts {
-    view_label: "Clarity Instance Licenses"
-    type:  inner
-    sql_on: ${clarity_instances_v2.instance_id} = ${instance_license_counts.instance_id} ;;
-    relationship: one_to_many
-  }
+  #join: instance_license_counts {
+  #  view_label: "Clarity Instance Licenses"
+  #  type:  inner
+  #  sql_on: ${clarity_instances_v2.instance_id} = ${instance_license_counts.instance_id} ;;
+  #  relationship: one_to_many
+  #}
 
-  join: licenses {
-    view_label: "Clarity Instance Licenses"
-    type: inner
-    sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
-    relationship: many_to_one
+  #join: licenses {
+  #  view_label: "Clarity Instance Licenses"
+  #  type: inner
+  #  sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
+  #  relationship: many_to_one
     #sql_where: ${licenses.license_title} = ${aggregated_license_counts.license_type} ;;
-  }
+  #}
 
   join: aggregated_users {
     view_label: "Clarity Instances V2"
     type: left_outer
-    sql_on: ${clarity_instances_v2.instance_id} = ${aggregated_users.ops_instance_id}
-        AND ${licenses.license_title} = ${aggregated_users.license_type} ;;
+    sql_on: ${clarity_instances_v2.instance_id} = ${aggregated_users.ops_instance_id} ;;
     relationship: one_to_many
     fields: [aggregated_users.user_id,
       aggregated_users.user_name,
@@ -228,9 +227,9 @@ explore: clarity_instances_v2{
   }
 
   join: user_license {
-    view_label: "Aggregated Clarity Licenses"
+    view_label: "Clarity Licenses"
     from:  licenses
-    type: left_outer
+    type: full_outer
     sql_on: ${aggregated_license_counts.license_type} = ${user_license.license_title} ;;
     relationship: one_to_many
   }
