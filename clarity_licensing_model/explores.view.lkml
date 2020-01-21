@@ -183,20 +183,20 @@ explore: clarity_instances_v2{
   label: "Clarity Instances V2"
   from:  instances
 
-  #join: instance_license_counts {
-  #  view_label: "Clarity Instance Licenses"
-  #  type:  inner
-  #  sql_on: ${clarity_instances_v2.instance_id} = ${instance_license_counts.instance_id} ;;
-  #  relationship: one_to_many
-  #}
+  join: instance_license_counts {
+    view_label: "Clarity Instance Licenses"
+    type:  inner
+    sql_on: ${clarity_instances_v2.instance_id} = ${instance_license_counts.instance_id} ;;
+    relationship: one_to_many
+  }
 
-  #join: licenses {
-  #  view_label: "Clarity Instance Licenses"
-  #  type: inner
-  #  sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
-  #  relationship: many_to_one
+  join: licenses {
+    view_label: "Clarity Instance Licenses"
+    type: inner
+    sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
+    relationship: many_to_one
     #sql_where: ${licenses.license_title} = ${aggregated_license_counts.license_type} ;;
-  #}
+  }
 
   join: aggregated_users {
     view_label: "Clarity Instances V2"
