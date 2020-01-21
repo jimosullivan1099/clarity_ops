@@ -116,7 +116,11 @@ explore: clarity_instances {
     sql_on: ${clarity_instances.instance_id} = ${ops_aggregated_users.ops_instance_id}
       AND  ${licenses.license_title} = ${ops_aggregated_users.license_type};;
     relationship: one_to_many
-    fields: [ops_aggregated_users.users_count]
+    fields: [ops_aggregated_users.user_id,
+      ops_aggregated_users.user_name,
+      ops_aggregated_users.user_email,
+      ops_aggregated_users.user_status,
+      ops_aggregated_users.users_count]
   }
 
   join: aggregated_instances {
