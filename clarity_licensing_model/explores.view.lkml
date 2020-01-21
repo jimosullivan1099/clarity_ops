@@ -132,7 +132,6 @@ explore: clarity_instances {
     fields: [ops_aggregated_agencies.agency_id,
       ops_aggregated_agencies.agency_name,
       ops_aggregated_agencies.agency_status,
-      ops_aggregated_agencies.agency_added_date,
       ops_aggregated_agencies.agency_count]
   }
 
