@@ -180,7 +180,7 @@ explore: clarity_instances {
 
 
 explore: clarity_instances_V2{
-  label: "Clarity Instances"
+  label: "Clarity Instances V2"
   from:  instances
 
   join: master_servers {
