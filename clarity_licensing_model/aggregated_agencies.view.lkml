@@ -9,6 +9,7 @@ view: aggregated_agencies {
   }
 
   dimension: system_url {
+    hidden: yes
     type: string
     sql: ${TABLE}.system_url ;;
   }
@@ -19,6 +20,7 @@ view: aggregated_agencies {
   }
 
   dimension: ops_instance_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.ops_instance_id ;;
   }
