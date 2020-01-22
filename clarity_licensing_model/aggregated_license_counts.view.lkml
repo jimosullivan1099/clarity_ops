@@ -71,4 +71,14 @@ view: aggregated_license_counts {
     sql:  ${TABLE}.license_increase_amount ;;
     value_format_name: usd
   }
+
+  measure: license_types {
+    type: list
+    list_field: license_type
+  }
+
+  measure: license_types_count {
+    type: count_distinct
+    sql:  ${TABLE}.license_type_id;;
+  }
 }
