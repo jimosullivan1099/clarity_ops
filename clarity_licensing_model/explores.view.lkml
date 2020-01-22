@@ -129,7 +129,6 @@ explore: clarity_instances {
     type: left_outer
     sql_on: ${clarity_instances.instance_id} = ${ops_aggregated_agencies.ops_instance_id} ;;
     relationship: one_to_many
-    fields: [ops_aggregated_agencies.agency_id]
   }
 
   join: aggregated_instances {
