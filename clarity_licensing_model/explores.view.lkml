@@ -339,12 +339,12 @@ explore: clarity_instances_v2 {
     relationship: one_to_many
   }
 
-#  join: licenses {
-#    view_label: "Clarity Licenses"
-#    type: inner
-#    sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
-#    relationship: many_to_one
-#  }
+  join: licenses {
+    view_label: "Clarity Licenses"
+    type: inner
+    sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
+    relationship: many_to_one
+  }
 
 #  join: transactions {
 #    view_label: "Clarity Licenses"
@@ -394,6 +394,15 @@ explore: clarity_instances_v2 {
       aggregated_users.user_email,
       aggregated_users.user_status,
       aggregated_users.users_count]
+  }
+
+  join: user_instance_license_counts {
+    view_label: "Clarity Licenses"
+    from:  instance_license_counts
+    type:  left_outer
+    sql_on: ${aggregated_users.instance_id} = ${user_instance_license_counts.instance_id}
+        AND ${aggregated_users.ops_license_id} = ${user_instance_license_counts.license_id};;
+    relationship: one_to_one
   }
 
 #  join: aggregated_agencies {
