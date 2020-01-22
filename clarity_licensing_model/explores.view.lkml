@@ -398,7 +398,6 @@ explore: clarity_instances_v2 {
 
   join: user_instance_license_counts {
     view_label: "Clarity Licenses"
-    from:  instance_license_counts
     type:  left_outer
     sql_on: ${aggregated_users.ops_instance_id} = ${user_instance_license_counts.instance_id}
         AND ${aggregated_users.ops_license_id} = ${user_instance_license_counts.license_id};;
