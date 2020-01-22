@@ -16,7 +16,7 @@ view: instance_license_counts {
   }
 
   dimension: license_id {
-    hidden: yes
+    #hidden: yes
     type: number
     sql: ${TABLE}.ref_license ;;
   }
