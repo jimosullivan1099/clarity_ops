@@ -44,7 +44,7 @@ view: aggregated_agencies {
 
   dimension: is_active_agency {
     type: yesno
-    sql: CASE WHEN ${TABLE}.agency_status = 1 THEN 1 ELSE 0 ;;
+    sql: CASE WHEN ${TABLE}.agency_status = 1 THEN 1 ELSE 0 END ;;
   }
 
   dimension_group: agency_added_date {
