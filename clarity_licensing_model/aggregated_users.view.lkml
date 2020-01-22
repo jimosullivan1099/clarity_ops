@@ -9,6 +9,7 @@ view: aggregated_users {
   }
 
   dimension: system_url {
+    hidden: yes
     type: string
     sql: ${TABLE}.system_url ;;
   }
@@ -18,8 +19,15 @@ view: aggregated_users {
   }
 
   dimension: ops_instance_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.ops_instance_id ;;
+  }
+
+  dimension: ops_license_id {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.ops_license_id ;;
   }
 
   dimension: user_name {
