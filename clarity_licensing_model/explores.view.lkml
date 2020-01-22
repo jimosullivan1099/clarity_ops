@@ -59,35 +59,35 @@ explore: clarity_instances {
   }
 
   join: instance_license_counts {
-    view_label: "Clarity Instance Licenses"
+    view_label: "Clarity Licenses"
     type:  inner
     sql_on: ${clarity_instances.instance_id} = ${instance_license_counts.instance_id} ;;
     relationship: one_to_many
   }
 
   join: licenses {
-    view_label: "Clarity Instance Licenses"
+    view_label: "Clarity Licenses"
     type: inner
     sql_on: ${instance_license_counts.license_id} = ${licenses.id} ;;
     relationship: many_to_one
   }
 
   join: transactions {
-    view_label: "Clarity Instance Licenses"
+    view_label: "Clarity Licenses"
     type: inner
     sql_on: ${instance_license_counts.id} = ${transactions.instance_license_count_id} ;;
     relationship: one_to_many
   }
 
   join: instance_license_limiters {
-    view_label: "Clarity Instance Licenses"
+    view_label: "Clarity Licenses"
     type: inner
     sql_on: ${clarity_instances.instance_id} = ${instance_license_limiters.instance_id} ;;
     relationship: one_to_many
   }
 
   join: license_limiters {
-    view_label: "Clarity Instance Licenses"
+    view_label: "Clarity Licenses"
     type: inner
     sql_on: ${instance_license_limiters.license_limiter_id} = ${license_limiters.id}
        AND  ${licenses.id} = ${license_limiters.license_types_id};;
@@ -95,14 +95,14 @@ explore: clarity_instances {
   }
 
   join: license_editions {
-    view_label: "Clarity Instance Licenses"
+    view_label: "Clarity Licenses"
     type: inner
     sql_on: ${clarity_instances.license_edition_id} = ${license_editions.license_edition_id} ;;
     relationship: many_to_one
   }
 
   join: license_edition_licenses {
-    view_label: "Clarity Instance Licenses"
+    view_label: "Clarity Licenses"
     type: inner
     sql_on: ${license_editions.license_edition_id} = ${license_edition_licenses.license_edition_id}
         AND ${licenses.id} = ${license_edition_licenses.license_id} ;;
@@ -110,7 +110,7 @@ explore: clarity_instances {
   }
 
   join: ops_aggregated_users {
-    view_label: "Clarity Instances"
+    view_label: "Clarity Users"
     from: aggregated_users
     type: left_outer
     sql_on: ${clarity_instances.instance_id} = ${ops_aggregated_users.ops_instance_id}
@@ -124,11 +124,12 @@ explore: clarity_instances {
   }
 
   join: ops_aggregated_agencies {
-    view_label: "Clarity Instances"
+    view_label: "Clarity Agencies"
     from: aggregated_agencies
     type: left_outer
     sql_on: ${clarity_instances.instance_id} = ${ops_aggregated_agencies.ops_instance_id} ;;
     relationship: one_to_many
+    fields: [ops_aggregated_agencies.agency_id]
   }
 
   join: aggregated_instances {
@@ -139,7 +140,7 @@ explore: clarity_instances {
   }
 
   join: aggregated_users {
-    view_label: "Aggregated Clarity Instances"
+    view_label: "Aggregated Clarity Users"
     type: left_outer
     sql_on: ${aggregated_instances.system_url} = ${aggregated_users.system_url} ;;
     relationship: one_to_many
@@ -171,21 +172,19 @@ explore: clarity_instances {
     type: inner
     sql_on: ${aggregated_license_counts.system_url} = ${license_limits.system_url}
        AND  ${aggregated_license_counts.license_type_id} = ${license_limits.license_type_id} ;;
-    #sql_on: ${clarity_instances.instance_id} = ${aggregated_users.ops_instance_id}
-    #   AND  ${licenses.license_title} = ${aggregated_users.license_type} ;;
     relationship: one_to_many
     fields: [license_limit_name, license_limit_count]
   }
 
   join: instance_looker_users {
-    view_label: "Clarity Instance Looker users"
+    view_label: "Clarity Looker users"
     type: inner
     sql_on: ${clarity_instances.instance_id} = ${instance_looker_users.instance_id} ;;
     relationship: one_to_many
   }
 
   join: looker_users {
-    view_label: "Clarity Instance Looker users"
+    view_label: "Clarity Looker users"
     type: inner
     sql_on: ${instance_looker_users.looker_user_id} = ${looker_users.id};;
     relationship: one_to_many
