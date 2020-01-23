@@ -27,9 +27,9 @@ view: looker_users {
     type: string
     sql: ${TABLE}.email ;;
     action: {
-      label: "Test my action"
-      url: "https://actions.torregrosa.me/actions/my_action/execute"
-      form_url: "https://actions.torregrosa.me/actions/my_action/form"
+      label: "Email"
+      url: "https://actions.torregrosa.me/actions/basic_email/execute"
+      form_url: "https://actions.torregrosa.me/actions/basic_email/form"
     }
   }
 
