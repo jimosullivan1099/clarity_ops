@@ -19,7 +19,12 @@ view: instance_agency_counts {
 
   filter: agency_status {
     type: string
-    sql: IF( ${agency_status} = "Active", 1, 2 ) ;;
+    sql:
+      {% if ${agency_status} == 'Active' %}
+      1
+      {% else %}
+      2
+      {% endif %} ;;
     suggestions: ["Active","Inactive"]
   }
 
