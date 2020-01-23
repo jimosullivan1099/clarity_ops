@@ -21,7 +21,8 @@ view: user_instance_license_counts {
     sql: ${TABLE}.ref_license ;;
   }
 
-  dimension: user_license_active {
+  dimension: usdder_license_active {
+    hidden: yes
     type: yesno
     sql: ${TABLE}.active ;;
   }

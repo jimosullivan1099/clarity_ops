@@ -426,3 +426,15 @@ explore: clarity_instances {
   }
 
 }
+
+explore: clarity_test {
+  label: "Clarity Test"
+  from:  instances
+
+  join: instance_agency_counts {
+    view_label: "Clarity Test"
+    type: inner
+    sql_on: ${clarity_test.instance_id} = ${instance_agency_counts.instance_id} ;;
+    relationship: one_to_one
+  }
+}
