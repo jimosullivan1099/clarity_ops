@@ -7,12 +7,22 @@ view: instance_agency_counts {
           FROM clarity_instance_aggregates.agencies a
           WHERE
             a.ops_instance_id IS NOT NULL AND
-            {% condition agency_status %} a.agency_status {% endcondition %}
+            a.agency_status = (CASE WHEN "{{agency_status._parameter_value}}" = 'Active' THEN 1
+                                    WHEN "{{agency_status._parameter_value}}" = 'Inactive' THEN 2
+                                    ELSE 0
+                               END)
           GROUP BY a.ops_instance_id;;
   }
 
-  filter: agency_status {
-    type: string
+# {% condition agency_status %} a.agency_status {% endcondition %}
+
+#   filter: agency_status {
+#     type: string
+#     suggestions: ["Active","Inactive"]
+#   }
+
+  parameter: agency_status {
+    type: unquoted
     suggestions: ["Active","Inactive"]
   }
 
