@@ -18,10 +18,10 @@ view: instance_agency_counts {
   }
 
   filter: agency_status {
-    type: number
-    suggestions: ["1","2"]
+    type: string
+    sql: IF( ${agency_status} = "Active", 1, 2 ) ;;
+    suggestions: ["Active","Inactive"]
   }
-
 
   dimension: instance_id {
     hidden:  yes
