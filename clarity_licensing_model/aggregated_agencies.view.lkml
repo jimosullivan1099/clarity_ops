@@ -31,22 +31,8 @@ view: aggregated_agencies {
   }
 
   dimension: agency_status {
-    case: {
-      when: {
-        sql: ${TABLE}.agency_status = 1 ;;
-        label: "Active"
-      }
-      when: {
-        sql: ${TABLE}.agency_status = 2 ;;
-        label: "Inactive"
-      }
-      else: "Unknown"
-    }
-  }
-
-  dimension: is_active_agency {
-    type: yesno
-    sql: CASE WHEN ${TABLE}.agency_status = 1 THEN 1 ELSE 0 END ;;
+    type: string
+    sql: ${TABLE}.agency_status ;;
   }
 
   dimension_group: agency_added_date {

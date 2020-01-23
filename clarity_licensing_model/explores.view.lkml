@@ -19,8 +19,6 @@ explore: looker_users {
   }
 }
 
-explore: agency_status {}
-
 #explore: clarity_instances {
 #  label: "Clarity Instances"
 #  from:  instances

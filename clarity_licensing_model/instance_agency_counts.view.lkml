@@ -12,9 +12,8 @@ view: instance_agency_counts {
   }
 
   filter: agency_status {
-    type: number
-    suggest_explore: agency_status
-    suggest_dimension: agency_status.agency_status
+    type: string
+    suggestions: ["Active","Inactive"]
   }
 
   dimension: instance_id {
