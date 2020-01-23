@@ -1,3 +1,5 @@
+include: "explores.view"
+
 view: instance_agency_counts {
 
   derived_table: {
@@ -10,8 +12,9 @@ view: instance_agency_counts {
   }
 
   filter: agency_status {
-    type: string
+    type: number
     suggest_explore: agency_status
+    suggest_dimension: agency_status.agency_status
   }
 
   dimension: instance_id {
