@@ -23,7 +23,7 @@ view: instance_agency_counts {
   }
 
   measure: agencies_count {
-    type: number
+    type: sum
     sql: ${TABLE}.agencies_count ;;
   }
 }
