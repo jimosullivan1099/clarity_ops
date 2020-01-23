@@ -332,6 +332,13 @@ explore: clarity_instances {
     fields: [database_servers.database_name]
   }
 
+  join: instance_agency_counts {
+    view_label: "Clarity Instances"
+    type: inner
+    sql_on: ${clarity_instances.instance_id} = ${instance_agency_counts.instance_id} ;;
+    relationship: one_to_one
+  }
+
   join: instance_license_counts {
     view_label: "Clarity Licenses"
     type:  inner
@@ -404,12 +411,12 @@ explore: clarity_instances {
     relationship: one_to_one
   }
 
-  join: aggregated_agencies {
-    view_label: "Clarity Agencies"
-    type: left_outer
-    sql_on: ${clarity_instances.instance_id} = ${aggregated_agencies.ops_instance_id} ;;
-    relationship: one_to_many
-  }
+#  join: aggregated_agencies {
+#    view_label: "Clarity Agencies"
+#    type: left_outer
+#    sql_on: ${clarity_instances.instance_id} = ${aggregated_agencies.ops_instance_id} ;;
+#    relationship: one_to_many
+#  }
 
   join: instance_looker_users {
     view_label: "Clarity Looker users"
@@ -425,16 +432,4 @@ explore: clarity_instances {
     relationship: one_to_many
   }
 
-}
-
-explore: clarity_test {
-  label: "Clarity Test"
-  from:  instances
-
-  join: instance_agency_counts {
-    view_label: "Clarity Test"
-    type: inner
-    sql_on: ${clarity_test.instance_id} = ${instance_agency_counts.instance_id} ;;
-    relationship: one_to_one
-  }
 }
