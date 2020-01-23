@@ -5,7 +5,7 @@ view: instance_agency_counts {
           FROM clarity_instance_aggregates.agencies a
           WHERE
             a.ops_instance_id IS NOT NULL AND
-            {% condition agency_status %} a.agency_status {% endcondition %}
+            {% condition agency_status_id %} a.agency_status {% endcondition %}
           GROUP BY a.ops_instance_id;;
     #explore_source: clarity_instances {
     #  column: instance_id {}
@@ -17,14 +17,14 @@ view: instance_agency_counts {
     #}
   }
 
+  filter: agency_status_id {
+    hidden: yes
+    type: number
+    sql: IF( ${agency_status} = 'Active', 1, 2 ) ;;
+  }
+
   filter: agency_status {
     type: string
-    sql:
-      {% if ${agency_status} == 'Active' %}
-      1
-      {% else %}
-      2
-      {% endif %} ;;
     suggestions: ["Active","Inactive"]
   }
 
