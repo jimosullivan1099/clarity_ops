@@ -401,14 +401,14 @@ explore: clarity_instances {
       aggregated_users.user_email,
       aggregated_users.user_status,
       aggregated_users.users_count,
-      aggregated_users.user_added_date_date,
-      aggregated_users.user_added_date_month,
-      aggregated_users.user_added_date_time,
-      aggregated_users.user_added_date_week,
-      aggregated_users.user_last_visited_date_date,
-      aggregated_users.user_last_visited_date_month,
-      aggregated_users.user_last_visited_date_time,
-      aggregated_users.user_last_visited_date_week]
+      aggregated_users.user_added_date,
+      aggregated_users.user_added_month,
+      aggregated_users.user_added_time,
+      aggregated_users.user_added_week,
+      aggregated_users.user_last_visited_date,
+      aggregated_users.user_last_visited_month,
+      aggregated_users.user_last_visited_time,
+      aggregated_users.user_last_visited_week]
   }
 
   join: user_instance_license_counts {
