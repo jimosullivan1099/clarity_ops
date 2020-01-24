@@ -9,7 +9,8 @@ view: instance_agency_counts {
             a.ops_instance_id IS NOT NULL AND
             a.agency_status = (CASE WHEN "{{agency_status._parameter_value}}" = 'Active' THEN 1
                                     WHEN "{{agency_status._parameter_value}}" = 'Inactive' THEN 2
-                                    ELSE IF( "{{agency_status._parameter_value}}" = '', TRUE, FALSE )
+                                    WHEN "{{agency_status._parameter_value}}" = '' THEN TRUE
+                                    ELSE FALSE
                                END)
           GROUP BY a.ops_instance_id;;
   }
