@@ -61,13 +61,13 @@ view: aggregated_users {
     sql: ${TABLE}.license_type ;;
   }
 
-  dimension_group: user_added_date {
+  dimension_group: user_added {
     type: time
     timeframes: [time, date, week, month]:
     sql: ${TABLE}.user_added_date ;;
   }
 
-  dimension_group: user_last_visited_date {
+  dimension_group: user_last_visited {
     type: time
     timeframes: [time, date, week, month]:
     sql: ${TABLE}.user_last_visited_date ;;
