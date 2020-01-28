@@ -1,5 +1,7 @@
 view: instance_license_counts {
 
+  view_label: "Clarity Licenses"
+
   sql_table_name: clarity_ops.instance_license_count ;;
 
   dimension: id {

@@ -1,4 +1,7 @@
 view: aggregated_agencies {
+
+  view_label: "Clarity Agencies"
+
   sql_table_name: clarity_instance_aggregates.agencies ;;
 
   dimension: prim_key {
@@ -41,9 +44,7 @@ view: aggregated_agencies {
     sql: ${TABLE}.added_date ;;
   }
 
-
   measure: agencies_count {
     type: count
   }
-
 }

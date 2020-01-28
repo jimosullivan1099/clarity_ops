@@ -1,8 +1,11 @@
 view: database_servers {
 
+  view_label: "Clarity Instances"
+
   sql_table_name:  clarity_ops.server_instance_database ;;
 
   dimension: database_id {
+    hidden: yes
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
@@ -20,5 +23,9 @@ view: database_servers {
 
   measure: database_count {
     type: count
+  }
+
+  set: basic_fields {
+    fields: [database_name]
   }
 }

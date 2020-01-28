@@ -1,4 +1,8 @@
 view: transactions {
+
+  view_label: "Clarity Licenses"
+
+
   sql_table_name: clarity_ops.transaction ;;
 
   dimension: transaction_id {

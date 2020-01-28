@@ -1,5 +1,7 @@
 view: license_types {
 
+  view_label: "Clarity Licenses"
+
   sql_table_name: license_type ;;
 
   dimension: license_types_id {

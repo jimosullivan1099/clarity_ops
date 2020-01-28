@@ -1,4 +1,7 @@
 view: instance_license_limiters {
+
+  view_label: "Clarity Licenses"
+
   sql_table_name: clarity_ops.instance_license_limiters ;;
 
   dimension: id {
