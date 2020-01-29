@@ -2,6 +2,8 @@ include: "explores.view"
 
 view: instance_agency_counts {
 
+  view_label: "Clarity Instances"
+
   derived_table: {
     sql:  SELECT a.ops_instance_id, COUNT(a.agency_id) agencies_count
           FROM clarity_instance_aggregates.agencies a
@@ -14,13 +16,6 @@ view: instance_agency_counts {
                                END)
           GROUP BY a.ops_instance_id;;
   }
-
-# {% condition agency_status %} a.agency_status {% endcondition %}
-
-#   filter: agency_status {
-#     type: string
-#     suggestions: ["Active","Inactive"]
-#   }
 
   parameter: agency_status {
     type: unquoted

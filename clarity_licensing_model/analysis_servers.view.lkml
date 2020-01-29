@@ -1,5 +1,7 @@
 view: analysis_servers {
 
+  view_label: "Clarity Instances"
+
   sql_table_name:  clarity_ops.server_instance ;;
 
   dimension: analysis_server_id {
@@ -21,5 +23,9 @@ view: analysis_servers {
 
   measure: analysis_server_count {
     type:  count
+  }
+
+  set: basic_fields  {
+    fields: [analysis_server_name, analysis_server_count]
   }
 }

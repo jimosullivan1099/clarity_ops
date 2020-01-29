@@ -1,4 +1,7 @@
 view: license_editions {
+
+  view_label: "Clarity Licenses"
+
   sql_table_name: clarity_ops.license_editions ;;
 
   dimension: license_edition_id {

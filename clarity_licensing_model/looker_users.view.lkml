@@ -1,4 +1,7 @@
 view: looker_users {
+
+  view_label: "Clarity Looker Users"
+
   sql_table_name:  clarity_instance_aggregates.looker_users ;;
 
   dimension: id {

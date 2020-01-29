@@ -1,5 +1,7 @@
 view: instances {
 
+  view_label: "Clarity Instances"
+
   sql_table_name: clarity_ops.instance ;;
 
   dimension: instance_id {

@@ -1,4 +1,7 @@
 view: licenses {
+
+  view_label: "Clarity Licenses"
+
   sql_table_name: clarity_ops.license ;;
 
   dimension: id {

@@ -1,13 +1,17 @@
 view: reporting_servers {
 
+  view_label: "Clarity Instances"
+
   sql_table_name:  clarity_ops.server_instance ;;
 
   dimension: reporting_server_id {
+    hidden: yes
     sql: ${TABLE}.id ;;
     primary_key: yes
   }
 
   dimension: server_id {
+    hidden: yes
     sql: ${TABLE}.ref_server ;;
   }
 
@@ -21,5 +25,9 @@ view: reporting_servers {
 
   measure: reporting_server_count {
     type: count
+  }
+
+  set: basic_fields  {
+    fields: [reporting_server_name, reporting_server_count]
   }
 }
