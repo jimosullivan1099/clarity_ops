@@ -131,14 +131,14 @@ explore: clarity_instances {
   }
 
   join: instance_looker_users {
-    view_label: "Clarity Looker users"
+    view_label: "Clarity Looker Users"
     type: left_outer
     sql_on: ${clarity_instances.instance_id} = ${instance_looker_users.instance_id} ;;
     relationship: one_to_many
   }
 
   join: looker_users {
-    view_label: "Clarity Looker users"
+    view_label: "Clarity Looker Users"
     type: left_outer
     sql_on: ${instance_looker_users.looker_user_id} = ${looker_users.id};;
     relationship: one_to_many

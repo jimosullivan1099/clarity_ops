@@ -72,7 +72,7 @@ view: aggregated_users {
 
   dimension_group: user_last_visited {
     type: time
-    timeframes: [time, date, week, month]:
+    timeframes: [time, date, week, month, quarter, fiscal_quarter]:
     sql: ${TABLE}.user_last_visited_date ;;
   }
 
@@ -95,7 +95,9 @@ view: aggregated_users {
       user_last_visited_date,
       user_last_visited_month,
       user_last_visited_time,
-      user_last_visited_week]
+      user_last_visited_week,
+      user_last_visited_quarter,
+      user_last_visited_fiscal_quarter]
   }
 
   set: basic_drilldown {
