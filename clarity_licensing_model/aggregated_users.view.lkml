@@ -66,7 +66,7 @@ view: aggregated_users {
 
   dimension_group: user_added {
     type: time
-    timeframes: [time, date, week, month, quarter, fiscal_quarter]:
+    timeframes: [date, week, month, quarter, fiscal_quarter]:
     sql: ${TABLE}.user_added_date ;;
   }
 
@@ -78,7 +78,7 @@ view: aggregated_users {
 
   measure: users_count {
     type: count
-    drill_fields: [basic_fields*]
+    drill_fields: [basic_drilldown*]
   }
 
   set: basic_fields {
@@ -89,11 +89,22 @@ view: aggregated_users {
       users_count,
       user_added_date,
       user_added_month,
-      user_added_time,
       user_added_week,
+      user_added_quarter,
+      user_added_fiscal_quarter,
       user_last_visited_date,
       user_last_visited_month,
       user_last_visited_time,
       user_last_visited_week]
   }
+
+  set: basic_drilldown {
+    fields: [user_id,
+      user_name,
+      user_email,
+      user_status,
+      user_added_date,
+      user_last_visited_time]
+  }
+
 }
