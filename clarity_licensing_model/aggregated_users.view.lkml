@@ -78,6 +78,7 @@ view: aggregated_users {
 
   measure: users_count {
     type: count
+    drill_fields: [basic_fields*]
   }
 
   set: basic_fields {
