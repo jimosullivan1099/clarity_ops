@@ -1,4 +1,5 @@
 view: aggregated_user_licenses {
+  view_label: "Clarity Users"
 
   sql_table_name: clarity_instance_aggregates.user_licenses ;;
 
