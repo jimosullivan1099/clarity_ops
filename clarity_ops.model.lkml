@@ -1,5 +1,6 @@
 connection: "clarity_ops"
 
+
 # include all the views
 include: "ops_views/*.view"
 include: "clarity_licensing_model/explores.view"
