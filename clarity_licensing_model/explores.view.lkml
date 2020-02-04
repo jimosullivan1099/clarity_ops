@@ -113,47 +113,29 @@ explore: clarity_instances {
     relationship: one_to_many
   }
 
-  join: aggregated_users {
-    view_label: "Clarity Users"
-    type: left_outer
-    sql_on: ${instance_license_counts.instance_id} = ${aggregated_users.ops_instance_id}
-      AND  ${instance_license_counts.license_id} = ${aggregated_users.ops_license_id} ;;
-    relationship: one_to_many
-    fields: [aggregated_users.basic_fields*]
-  }
-
-  join: user_instance_license_counts {
-    view_label: "Clarity Users"
-    type:  left_outer
-    sql_on: ${aggregated_users.ops_instance_id} = ${user_instance_license_counts.instance_id}
-        AND ${aggregated_users.ops_license_id} = ${user_instance_license_counts.license_id};;
-    relationship: one_to_one
-  }
-
  join: aggregated_user_licenses {
-    view_label: "Clarity Instance Users"
+    view_label: "Clarity Users"
     type: left_outer
     sql_on: ${instance_license_counts.instance_id} = ${aggregated_user_licenses.ops_instance_id}
         AND ${instance_license_counts.license_id} = ${aggregated_user_licenses.ops_license_id} ;;
     relationship: one_to_many
   }
 
-  join: aggregated_instance_users {
-    view_label: "Clarity Instance Users"
+  join: aggregated_users {
+    view_label: "Clarity Users"
     type: left_outer
-    sql_on: ${aggregated_user_licenses.ops_instance_id} = ${aggregated_instance_users.ops_instance_id}
-        AND ${aggregated_user_licenses.user_id} = ${aggregated_instance_users.user_id} ;;
+    sql_on: ${aggregated_user_licenses.ops_instance_id} = ${aggregated_users.ops_instance_id}
+        AND ${aggregated_user_licenses.user_id} = ${aggregated_users.user_id} ;;
     relationship: many_to_one
-    fields: [aggregated_instance_users.basic_fields*]
+    fields: [aggregated_users.basic_fields*]
   }
 
-  join: aggregated_user_instance_license_counts {
-    from: user_instance_license_counts
-    view_label: "Clarity Instance Users"
+  join: user_instance_license_counts {
+    view_label: "Clarity Users"
     type:  left_outer
-    sql_on: ${aggregated_user_licenses.ops_instance_id} = ${aggregated_user_instance_license_counts.instance_id}
-      AND ${aggregated_user_licenses.ops_license_id} = ${aggregated_user_instance_license_counts.license_id}
-      AND ${aggregated_instance_users.user_id} = ${aggregated_user_licenses.user_id} ;;
+    sql_on: ${aggregated_user_licenses.ops_instance_id} = ${user_instance_license_counts.instance_id}
+      AND ${aggregated_user_licenses.ops_license_id} = ${user_instance_license_counts.license_id}
+      AND ${aggregated_users.user_id} = ${aggregated_user_licenses.user_id} ;;
     relationship: one_to_one
   }
 
